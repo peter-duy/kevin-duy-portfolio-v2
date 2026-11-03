@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kevin Duy's Portfolio</title>
+  <meta name="description" content="Kevin Duy — Tampa, Florida. Data Scientist, Data Engineer, and Analytics Engineer with an active TS/SCI clearance, experience building data applications, pipelines, analytics, and operational tools." />
+  <meta property="og:title" content="Kevin Duy | Data Science, Engineering & Analytics" />
+  <meta property="og:description" content="Kevin Duy — Tampa, Florida. Data Scientist, Data Engineer, and Analytics Engineer with an active TS/SCI clearance, experience building data applications, pipelines, analytics, and operational tools." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://peter-duy.github.io/kevin-duy-portfolio-v2/" />
+  <meta property="og:image" content="https://peter-duy.github.io/kevin-duy-portfolio-v2/scheduler.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1280" />
+  <meta property="og:image:alt" content="Kevin Duy portfolio calendar graphic" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kevin Duy | Data Science, Engineering & Analytics" />
+  <meta name="twitter:description" content="Kevin Duy — Tampa, Florida. Data Scientist, Data Engineer, and Analytics Engineer with an active TS/SCI clearance, experience building data applications, pipelines, analytics, and operational tools." />
+  <meta name="twitter:image" content="https://peter-duy.github.io/kevin-duy-portfolio-v2/scheduler.jpg" />
+  <meta name="twitter:image:alt" content="Kevin Duy portfolio calendar graphic" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; height: 100dvh; }
+    body {
+      background: #142a3d;
+      color: #ffffff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      display: flex;
+      align-items: center;
+      min-height: 100dvh;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .intro-inner { width: 100%; max-width: 92vw; text-align: center; }
+    .intro-title {
+      margin: 0 auto;
+      text-align: center;
+      font-size: clamp(1.9rem, 8.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      white-space: nowrap;
+      min-height: 1.15em;
+    }
+    .intro-sub {
+      margin: 14px auto 0;
+      text-align: center;
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      color: #8fc3dc;
+      white-space: nowrap;
+      min-height: 1.3em;
+    }
+    .caret {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: #8fc3dc;
+      margin-left: 3px;
+      vertical-align: -0.12em;
+      animation: intro-blink .7s step-end infinite;
+    }
+    @keyframes intro-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .intro-enter {
+      display: inline-block;
+      margin-top: 32px;
+      border: 1px solid #8fc3dc;
+      color: #8fc3dc;
+      background: transparent;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .intro-enter.show { opacity: 1; }
+    .intro-enter:hover { background: #203d55; color: #ffffff; }
+    @media (prefers-reduced-motion: reduce) {
+      .caret { display: none; }
+      .intro-enter { opacity: 1; transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    <div style="text-align:center;">
+      <h1 style="font-size:clamp(1.9rem,8.5vw,3.8rem);margin:0;">Kevin Duy's Portfolio</h1>
+      <p style="color:#8fc3dc;font-size:clamp(1rem,4vw,1.4rem);margin:14px 0 0;">Yes - I made this with AI</p>
+      <a href="portfolio.html" style="display:inline-block;margin-top:32px;border:1px solid #8fc3dc;color:#8fc3dc;padding:10px 20px;border-radius:999px;text-decoration:none;">Enter portfolio &rarr;</a>
+    </div>
+    <style>.intro-enter{opacity:1}</style>
+  </noscript>
+  <div class="intro-inner">
+    <p class="intro-title"><span id="intro-title-text"></span><span class="caret" id="intro-title-caret"></span></p>
+    <p class="intro-sub"><span id="intro-sub-text"></span><span class="caret" id="intro-sub-caret" style="display:none"></span></p>
+    <a class="intro-enter" id="intro-enter" href="portfolio.html">Enter portfolio &rarr;</a>
+  </div>
+  <script>
+    (function () {
+      var title = "Kevin Duy's Portfolio";
+      var sub = "Yes - I made this with AI";
+      var titleEl = document.getElementById('intro-title-text');
+      var subEl = document.getElementById('intro-sub-text');
+      var titleCaret = document.getElementById('intro-title-caret');
+      var subCaret = document.getElementById('intro-sub-caret');
+      var enter = document.getElementById('intro-enter');
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        titleEl.textContent = title;
+        subEl.textContent = sub;
+        titleCaret.style.display = 'none';
+        subCaret.style.display = 'none';
+        enter.classList.add('show');
+        return;
+      }
+      function type(el, text, speed, done) {
+        var i = 0;
+        (function step() {
+          if (i <= text.length) {
+            el.textContent = text.slice(0, i);
+            i++;
+            setTimeout(step, speed);
+          } else if (done) {
+            done();
+          }
+        })();
+      }
+      setTimeout(function () {
+        type(titleEl, title, 70, function () {
+          titleCaret.style.display = 'none';
+          subCaret.style.display = 'inline-block';
+          setTimeout(function () {
+            type(subEl, sub, 45, function () {
+              subCaret.style.display = 'none';
+              enter.classList.add('show');
+            });
+          }, 200);
+        });
+      }, 200);
+    })();
+  </script>
+</body>
+</html>

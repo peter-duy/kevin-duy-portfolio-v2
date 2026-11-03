@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f4f5f4" />
+
+  <title>Kevin Duy | Data Science, Engineering & Analytics</title>
+
+  <meta
+    name="description"
+    content="Kevin Duy — Tampa, Florida. Data Scientist, Data Engineer, and Analytics Engineer with an active TS/SCI clearance, experience building data applications, pipelines, analytics, and operational tools."
+  />
+  <meta property="og:title" content="Kevin Duy | Data Science, Engineering & Analytics" />
+  <meta property="og:description" content="Kevin Duy — Tampa, Florida. Data Scientist, Data Engineer, and Analytics Engineer with an active TS/SCI clearance, experience building data applications, pipelines, analytics, and operational tools." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://peter-duy.github.io/kevin-duy-portfolio-v2/" />
+  <meta property="og:image" content="https://peter-duy.github.io/kevin-duy-portfolio-v2/scheduler.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1280" />
+  <meta property="og:image:alt" content="Kevin Duy portfolio calendar graphic" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kevin Duy | Data Science, Engineering & Analytics" />
+  <meta name="twitter:description" content="Kevin Duy — Tampa, Florida. Data Scientist, Data Engineer, and Analytics Engineer with an active TS/SCI clearance, experience building data applications, pipelines, analytics, and operational tools." />
+  <meta name="twitter:image" content="https://peter-duy.github.io/kevin-duy-portfolio-v2/scheduler.jpg" />
+  <meta name="twitter:image:alt" content="Kevin Duy portfolio calendar graphic" />
+
+  <style>
+    /* =========================================================
+       KEVIN DUY — PORTFOLIO
+       Single-file, responsive, dependency-free implementation.
+       ========================================================= */
+
+    :root {
+      --page: #f4f5f4;
+      --surface: #ffffff;
+      --ink: #172635;
+      --ink-soft: #344657;
+      --muted: #4a5a66;
+      --line: #dce2e5;
+      --line-dark: #bdc9d0;
+      --navy: #142a3d;
+      --navy-light: #203d55;
+      --accent: #236b91;
+      --accent-light: #eaf2f6;
+      --white: #ffffff;
+
+      --content-width: 1160px;
+      --page-gutter: 6%;
+      --radius: 5px;
+
+      --font-body:
+        Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      --font-display:
+        Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #75a9c5;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    ::selection {
+      background: #c8dce8;
+      color: var(--navy);
+    }
+
+    .container {
+      width: min(
+        var(--content-width),
+        calc(100% - var(--page-gutter) * 2)
+      );
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 16px;
+      z-index: 100;
+      padding: 10px 16px;
+      background: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    /* ------------------------- Header ------------------------- */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 245, 244, 0.97);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      text-decoration: none;
+      line-height: 1.15;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--navy);
+    }
+
+    .brand-description {
+      margin-top: 5px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .header-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 39px;
+      padding: 0 16px;
+      border: 1px solid var(--navy);
+      border-radius: var(--radius);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 750;
+      text-decoration: none;
+      transition:
+        background 160ms ease,
+        color 160ms ease;
+      white-space: nowrap;
+    }
+
+    .header-link:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    /* -------------------------- Hero -------------------------- */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 94px 0 88px;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.7fr);
+      align-items: end;
+      gap: 76px;
+    }
+
+    .eyebrow {
+      margin: 0 0 23px;
+      color: #9fc0d2;
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(44px, 7vw, 82px);
+      font-weight: 790;
+      letter-spacing: -0.065em;
+      line-height: 0.99;
+    }
+
+    .hero h1 .accent-text {
+      color: #8db9d1;
+    }
+
+    .hero-role {
+      margin: 27px 0 0;
+      color: #d3e0e8;
+      font-size: clamp(14px, 1.7vw, 18px);
+      font-weight: 650;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      margin: 22px 0 0;
+      color: #c0ced8;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+      padding: 12px 17px;
+      border: 1px solid #7899ae;
+      border-radius: var(--radius);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 750;
+      text-decoration: none;
+      transition:
+        background 160ms ease,
+        border-color 160ms ease;
+    }
+
+    .hero-action:hover {
+      background: var(--navy-light);
+      border-color: #c0d5e1;
+    }
+
+    .hero-action .arrow {
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .hero-aside {
+      padding: 0 0 5px 27px;
+      border-left: 1px solid #456074;
+    }
+
+    .aside-label {
+      margin: 0 0 23px;
+      color: #9fc0d2;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .hero-credential {
+      padding: 0 0 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid #3a5266;
+    }
+
+    .hero-credential:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .hero-credential strong {
+      display: block;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 720;
+      line-height: 1.4;
+    }
+
+    .hero-credential span {
+      display: block;
+      margin-top: 5px;
+      color: #b4c5d0;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* --------------------- Credential strip ------------------- */
+
+    .credential-strip {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .credential-strip-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 23px 0;
+    }
+
+    .strip-item {
+      padding: 2px 22px;
+      border-right: 1px solid var(--line);
+    }
+
+    .strip-item:first-child {
+      padding-left: 0;
+    }
+
+    .strip-item:last-child {
+      border-right: 0;
+    }
+
+    .strip-label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .strip-value {
+      display: block;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 720;
+      line-height: 1.5;
+    }
+
+    /* ------------------------ Sections ------------------------ */
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 35px;
+      margin-bottom: 43px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(31px, 4.5vw, 49px);
+      font-weight: 790;
+      letter-spacing: -0.055em;
+      line-height: 1.08;
+    }
+
+    .section-intro {
+      max-width: 410px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* ---------------------- Selected work --------------------- */
+
+    .work-list {
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 175px minmax(0, 1fr);
+      gap: 48px;
+      padding: 40px 0 43px;
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .work-meta {
+      padding-top: 5px;
+    }
+
+    .work-number {
+      display: block;
+      margin-bottom: 15px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+    }
+
+    .work-company {
+      display: block;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .work-dates {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      line-height: 1.7;
+      text-transform: uppercase;
+    }
+
+    .work-location {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .work-content h3 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 760;
+      letter-spacing: -0.035em;
+      line-height: 1.25;
+    }
+
+    .work-summary {
+      max-width: 760px;
+      margin: 0 0 20px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.85;
+    }
+
+    .work-details {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .work-details li {
+      position: relative;
+      padding-left: 19px;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .work-details li::before {
+      position: absolute;
+      top: 0.73em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      content: "";
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 21px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 9px;
+      border: 1px solid #d5dfe4;
+      border-radius: 3px;
+      color: #476071;
+      font-size: 10px;
+      font-weight: 680;
+      line-height: 1.3;
+    }
+
+    .work-proof {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 23px;
+      padding: 15px 18px;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+    }
+
+    .proof-number {
+      flex-shrink: 0;
+      color: var(--accent);
+      font-size: 30px;
+      font-weight: 820;
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .proof-copy {
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .proof-copy strong {
+      display: block;
+      color: var(--navy);
+      font-size: 12px;
+    }
+
+    /* -------------------- Supporting project ------------------ */
+
+    .supporting-section {
+      padding: 82px 0;
+      background: #e9edef;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .project-panel {
+      padding: 35px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .project-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 20px;
+      margin-bottom: 14px;
+    }
+
+    .project-topline h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 23px;
+      font-weight: 780;
+      letter-spacing: -0.04em;
+      line-height: 1.25;
+    }
+
+    .project-type {
+      flex-shrink: 0;
+      padding: 5px 9px;
+      background: #eef2f4;
+      color: #536775;
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-description {
+      max-width: 800px;
+      margin: 0 0 23px;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .model-table th {
+      padding: 11px 13px;
+      background: #f1f4f5;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .model-table td {
+      padding: 13px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 12px;
+      vertical-align: top;
+    }
+
+    .model-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .model-table td:first-child {
+      color: var(--navy);
+      font-weight: 750;
+    }
+
+    .model-result {
+      color: var(--accent);
+      font-weight: 760;
+    }
+
+    .project-footnote {
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    /* ---------------------- Capabilities ---------------------- */
+
+    .capability-section {
+      padding: 88px 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .capability-layout {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .capability-copy h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(29px, 4vw, 42px);
+      font-weight: 790;
+      letter-spacing: -0.05em;
+      line-height: 1.1;
+    }
+
+    .capability-copy p:last-child {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .capability-groups {
+      display: grid;
+      gap: 24px;
+    }
+
+    .capability-group {
+      padding-bottom: 19px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .capability-group:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .capability-group h3 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .capability-group p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* ---------------------- Credentials ----------------------- */
+
+    .credentials-section {
+      padding: 88px 0;
+    }
+
+    .credentials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      margin-top: 38px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .credential-card {
+      min-height: 145px;
+      padding: 25px 27px;
+      background: var(--surface);
+    }
+
+    .credential-card .credential-type {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .credential-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 17px;
+      font-weight: 770;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+    }
+
+    .credential-card p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* ------------------------- Archive ------------------------- */
+
+    .archive-section {
+      padding: 85px 0;
+      background: #e9edef;
+      border-top: 1px solid var(--line);
+    }
+
+    .archive-list {
+      margin: 33px 0 0;
+      padding: 0;
+      border-top: 1px solid var(--line-dark);
+      list-style: none;
+    }
+
+    .archive-list li {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.4fr) minmax(0, 1.6fr);
+      gap: 25px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .archive-name {
+      color: var(--navy);
+      font-weight: 780;
+    }
+
+    .archive-description {
+      color: var(--ink-soft);
+    }
+
+    .archive-description a {
+      color: var(--accent);
+      font-weight: 750;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .archive-description a:hover {
+      color: var(--navy);
+    }
+
+    /* -------------------- Security statement ------------------- */
+
+    .disclosure-section {
+      padding: 24px 0;
+      background: var(--page);
+      color: var(--ink);
+      border-top: 1px solid var(--line);
+      margin-top: 24px;
+    }
+
+    .disclosure-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .disclosure-heading {
+      flex-shrink: 0;
+      color: #203d55;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .disclosure-text {
+      max-width: 790px;
+      margin: 0;
+      color: #203d55;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    /* -------------------------- Footer ------------------------- */
+
+    .site-footer {
+      padding: 32px 0;
+      background: var(--page);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-name {
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 820;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-note {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .footer-top {
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .footer-top:hover {
+      color: var(--navy);
+    }
+
+    /* ----------------------- Responsive ----------------------- */
+
+    @media (max-width: 850px) {
+      .hero {
+        padding: 76px 0 70px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .hero-aside {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 25px 0 0;
+        border-top: 1px solid #456074;
+        border-left: 0;
+      }
+
+      .aside-label {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+      }
+
+      .hero-credential {
+        padding: 0;
+        margin: 0;
+        border: 0;
+      }
+
+      .work-item {
+        grid-template-columns: 140px minmax(0, 1fr);
+        gap: 30px;
+      }
+
+      .capability-layout {
+        gap: 45px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      :root {
+        --page-gutter: 22px;
+      }
+
+      html {
+        scroll-padding-top: 120px;
+      }
+
+      .header-inner {
+        min-height: unset;
+        padding: 15px 0 12px;
+        flex-wrap: wrap;
+        gap: 13px;
+      }
+
+      .brand-name {
+        font-size: 13px;
+      }
+
+      .brand-description {
+        font-size: 12px;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 9px;
+        border-top: 1px solid var(--line);
+      }
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+      .header-link {
+        min-height: 44px;
+        padding: 0 14px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 65px 0 57px;
+      }
+
+      .hero h1 {
+        font-size: clamp(43px, 13vw, 64px);
+      }
+
+      .hero-role {
+        max-width: 360px;
+        line-height: 1.6;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-aside {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .hero-credential {
+        padding-bottom: 15px;
+        border-bottom: 1px solid #3a5266;
+      }
+
+      .hero-credential:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .credential-strip-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px 0;
+        padding: 20px 0;
+      }
+
+      .strip-item {
+        padding: 0 12px;
+      }
+
+      .strip-item:nth-child(odd) {
+        padding-left: 0;
+      }
+
+      .strip-item:nth-child(even) {
+        border-right: 0;
+      }
+
+      .strip-value {
+        font-size: 11px;
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .section-heading {
+        display: block;
+        margin-bottom: 30px;
+      }
+
+      .section-intro {
+        margin-top: 16px;
+      }
+
+      .work-item {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 29px 0 31px;
+      }
+
+      .work-meta {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: baseline;
+        gap: 4px 13px;
+      }
+
+      .work-number {
+        grid-row: span 2;
+        margin: 0;
+      }
+
+      .work-company {
+        font-size: 13px;
+      }
+
+      .work-dates {
+        margin-top: 0;
+        font-size: 9px;
+      }
+
+      .work-location {
+        grid-column: 2;
+        margin-top: 0;
+      }
+
+      .work-content h3 {
+        font-size: 21px;
+      }
+
+      .work-summary {
+        font-size: 13px;
+      }
+
+      .work-details li {
+        font-size: 12px;
+      }
+
+      .work-proof {
+        align-items: flex-start;
+        gap: 12px;
+        padding: 13px;
+      }
+
+      .proof-number {
+        font-size: 27px;
+      }
+
+      .supporting-section {
+        padding: 65px 0;
+      }
+
+      .project-panel {
+        padding: 23px 17px;
+      }
+
+      .project-topline {
+        display: block;
+      }
+
+      .project-topline h3 {
+        font-size: 21px;
+      }
+
+      .project-type {
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      .model-table th,
+      .model-table td {
+        padding: 10px 7px;
+        font-size: 10px;
+      }
+
+      .model-table th {
+        font-size: 8px;
+      }
+
+      .capability-section {
+        padding: 68px 0;
+      }
+
+      .capability-layout {
+        grid-template-columns: 1fr;
+        gap: 33px;
+      }
+
+      .credentials-section {
+        padding: 68px 0;
+      }
+
+      .credentials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .credential-card {
+        min-height: unset;
+        padding: 21px;
+      }
+
+      .archive-section {
+        padding: 68px 0;
+      }
+
+      .archive-list li {
+        grid-template-columns: 1fr;
+        gap: 2px;
+        padding: 13px 0;
+      }
+
+      .disclosure-inner {
+        display: block;
+      }
+
+      .disclosure-heading {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 360px) {
+      :root {
+        --page-gutter: 17px;
+      }
+
+      .nav-links a {
+        font-size: 9px;
+      }
+
+      .model-table th,
+      .model-table td {
+        padding-inline: 5px;
+        font-size: 9px;
+      }
+    }
+
+    /* -------------------- Reduced motion ---------------------- */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+
+    /* ------------------------ Print --------------------------- */
+
+    @media print {
+      .site-header {
+        position: static;
+      }
+
+      .header-link,
+      .hero-action,
+      .footer-top {
+        display: none;
+      }
+
+      body {
+        background: #ffffff;
+        color: #172635;
+      }
+
+      .hero,
+      .disclosure-section {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .section,
+      .supporting-section,
+      .capability-section,
+      .credentials-section,
+      .archive-section {
+        padding-top: 35px;
+        padding-bottom: 35px;
+      }
+
+      .work-item,
+      .project-panel,
+      .credential-card {
+        break-inside: avoid;
+      }
+    }
+  
+    /* --- Kenz v2: CSS-only tabs + project grid (no JS required for tabs) --- */
+    .kenz-tabs > input { position: absolute; opacity: 0; pointer-events: none; }
+    .kenz-tabbar { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 0; border-bottom: 1px solid var(--line); position: sticky; top: 76px; background: var(--page); z-index: 40; }
+    .kenz-tabbar label { border: 1.5px solid var(--navy); background: var(--surface); padding: 10px 16px; border-radius: 999px; font-weight: 700; cursor: pointer; }
+    #tab-projects:checked ~ .kenz-tabbar label[for="tab-projects"],
+    #tab-work:checked ~ .kenz-tabbar label[for="tab-work"],
+    #tab-project:checked ~ .kenz-tabbar label[for="tab-project"],
+    #tab-capabilities:checked ~ .kenz-tabbar label[for="tab-capabilities"],
+    #tab-credentials:checked ~ .kenz-tabbar label[for="tab-credentials"],
+    #tab-archive:checked ~ .kenz-tabbar label[for="tab-archive"] { background: var(--navy); color: var(--white); }
+    .kenz-panel { display: none; scroll-margin-top: 150px; }
+    .kenz-tabs { scroll-margin-top: 80px; }
+    .pt-branch, .v4-attic-card, .xp-mission { scroll-margin-top: 150px; }
+    #tab-projects:checked ~ .kenz-panels #panel-projects,
+    #tab-work:checked ~ .kenz-panels #panel-work,
+    #tab-project:checked ~ .kenz-panels #panel-project,
+    #tab-capabilities:checked ~ .kenz-panels #panel-capabilities,
+    #tab-credentials:checked ~ .kenz-panels #panel-credentials,
+    #tab-archive:checked ~ .kenz-panels #panel-archive { display: block; }
+    .kenz-panels .section, .kenz-panels .supporting-section, .kenz-panels .capability-section,
+    .kenz-panels .credentials-section, .kenz-panels .archive-section { padding-top: 28px; }
+    .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0; }
+    @media (max-width: 900px) { .proj-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .proj-grid { grid-template-columns: 1fr; } }
+    .proj-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .proj-card img { width: 100%; height: 170px; object-fit: cover; display: block; background: #dce2e5; }
+    .proj-body { padding: 18px; }
+    .proj-tag { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+    .proj-body h3 { margin: 6px 0; }
+    .proj-body p { margin: 6px 0; color: var(--ink-soft); }
+
+    /* --- v3: timeline tree, archive cards, tasteful fun (same palette) --- */
+    .tree { position: relative; margin: 8px 0 8px 14px; padding-left: 30px; border-left: 3px solid var(--navy); }
+    .tree-branch { margin: 30px 0; }
+    .tree-branch h3 { font-size: 20px; margin: 0 0 4px; }
+    .tree-branch > p { color: var(--muted); margin: 0 0 14px; }
+    .tree-node { position: relative; margin: 16px 0; }
+    .tree-node::before { content: ""; position: absolute; left: -38px; top: 10px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--page); transition: transform .18s; }
+    .tree-node:hover::before { transform: scale(1.25); }
+    .proj-card { transition: transform .18s, box-shadow .18s; }
+    .proj-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(20, 42, 61, .14); }
+    .kenz-tabbar label:hover { background: var(--accent-light); }
+    #tab-home:checked ~ .kenz-tabbar { display: none; }
+    #tab-home:checked ~ .kenz-panels #panel-home { display: block; }
+    .space-hub { padding: 28px 0; }
+    .space-kicker { color: var(--accent); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: 12px; }
+    .space-hub h2 { margin: 8px 0; }
+    .space-hub > p { color: var(--ink-soft); max-width: 720px; }
+    .space-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+    @media (max-width: 700px) { .space-grid { grid-template-columns: 1fr; } }
+    .space-card { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 22px; cursor: pointer; }
+    .space-card:hover { box-shadow: 0 10px 24px rgba(20, 42, 61, .14); transform: translateY(-3px); }
+    .space-num { color: var(--accent); font-weight: 800; }
+    .space-card h3 { margin: 6px 0; }
+    .space-card p { color: var(--ink-soft); margin: 6px 0; }
+    .space-go { color: var(--accent); font-weight: 700; }
+    .space-ai { color: var(--accent); font-weight: 700; margin: 0 0 8px; }
+    .space-back { display: inline-block; border: 1px solid var(--navy); border-radius: 999px; padding: 8px 14px; font-weight: 700; cursor: pointer; margin: 0 0 12px; background: #ffffff; }
+    .space-back:hover { background: var(--accent-light); }
+    @media (prefers-reduced-motion: reduce) { .space-card:hover { transform: none; } }
+    .hero-fun { font-size: 14px; color: var(--muted); margin-top: 12px; }
+    .archive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+    @media (max-width: 700px) { .archive-grid { grid-template-columns: 1fr; } }
+    .archive-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+    .archive-card h3 { margin: 6px 0; }
+    .archive-card p { margin: 6px 0; color: var(--ink-soft); }
+    @media (prefers-reduced-motion: reduce) { .proj-card, .tree-node::before { transition: none; } .proj-card:hover { transform: none; } }
+
+    .v4-hero-name { font-size: clamp(1.1rem, 3.5vw, 1.5rem); font-weight: 700; margin: 0 0 8px; color: #ffffff; }
+    .v4-hero-summary { color: #c8dce8; font-size: 16px; line-height: 1.6; max-width: 640px; margin: 12px 0 0; }
+    .pt-v2-note { background: #eaf2f6; border-left: 4px solid #236b91; padding: 10px 14px; font-size: 14px; color: #203d55; margin: 0 0 16px; }
+    .ml-lab__academic { color: #c8dce8; font-size: 14px; margin: 8px 0 0; }
+    :focus-visible { outline: 2px solid #236b91; outline-offset: 2px; }
+    .cap-scroll-hint { display: none; font-size: 13px; color: #4a5a66; }
+    @media (max-width: 820px) {
+      .v4-hero-ledger { padding: 14px; }
+      .v4-hero-proof { display: none; }
+      .pt-v2-note { font-size: 13px; }
+    }
+    @media (max-width: 700px) {
+      .kenz-tabbar { position: static; flex-wrap: nowrap; overflow-x: auto; }
+      .kenz-panel { scroll-margin-top: 90px; }
+      .cap-scroll-hint { display: block; }
+      .cap-matrix tbody td:first-child { position: sticky; left: 0; background: #ffffff; z-index: 1; } .cap-matrix thead th:first-child { position: sticky; left: 0; background: var(--navy); z-index: 2; }
+    }
+  </style>
+<style>
+  .v4-hero { background:#142a3d; color:#f4f5f4; position:relative; overflow:hidden; }
+    .v4-hero::after { content:""; position:absolute; right:-120px; top:-120px; width:360px; height:360px;
+    border:1px solid rgba(117,169,197,.35); border-radius:50%; pointer-events:none; }
+  .v4-hero-inner { position:relative; max-width:1160px; margin:0 auto; padding:56px 6% 40px;
+    display:grid; grid-template-columns:1.55fr .9fr; gap:36px; }
+  @media (max-width:820px) { .v4-hero-inner { grid-template-columns:1fr; padding-top:36px; } }
+  .v4-hero-eyebrow { letter-spacing:.14em; text-transform:uppercase; font-size:12px; font-weight:800; color:#8fc3dc; margin:0 0 14px; }
+  .v4-hero h1 { font-family:Georgia,serif; font-size:clamp(52px, 8vw, 96px); line-height:.95; margin:0; font-weight:700; }
+  .v4-hero h1 em { font-style:normal; color:#8fc3dc; }
+  .v4-hero-role { font-size:19px; font-weight:700; margin:20px 0 8px; }
+  .v4-hero-desc { color:#c8d6e0; max-width:640px; margin:0 0 22px; line-height:1.65; }
+  .v4-hero-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .v4-hero-cta { background:#8fc3dc; color:#142a3d; text-decoration:none; font-weight:800; padding:12px 20px; border-radius:6px; }
+  
+  .v4-hero-guide { color:#9db6c6; font-size:14px; margin:18px 0 0; }
+  .v4-hero-ledger { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18); border-radius:10px; padding:22px; align-self:start; }
+  .v4-hero-ledger h2, .v4-hero-ledger h3 { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#8fc3dc; margin:0 0 16px; }
+  .v4-hero-row { display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-top:1px solid rgba(255,255,255,.14); }
+  .v4-hero-row:first-of-type { border-top:0; padding-top:0; }
+  .v4-hero-row b { text-align:right; }
+  .v4-hero-row span { color:#c8d6e0; }
+  .v4-hero-proof { grid-column:1 / -1; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px; }
+  @media (max-width:820px) { .v4-hero-proof { grid-template-columns:1fr; } }
+  .v4-hero-proof div { border-top:3px solid #8fc3dc; padding-top:12px; }
+  .v4-hero-proof strong { display:block; font-size:15px; }
+  .v4-hero-proof span { color:#c8d6e0; font-size:14px; }
+  .v4-hero-rail { grid-column:1 / -1; display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .v4-hero-rail a { color:#eaf2f6; text-decoration:none; border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:7px 14px; font-size:13px; font-weight:700; }
+  .v4-hero-rail a:hover { background:rgba(255,255,255,.12); }
+  .v4-hero-rail b { color:#8fc3dc; margin-right:6px; }
+  @media (prefers-reduced-motion:no-preference) {
+    .v4-hero h1 em { animation:v4-sweep 6s ease-in-out infinite alternate; }
+    @keyframes v4-sweep { from { color:#8fc3dc; } to { color:#c8dce8; } }
+  }
+</style>
+<style>
+  .xp-wrap{--xp-navy:#142a3d;--xp-navy2:#203d55;--xp-accent:#236b91;--xp-amber:#8fc3dc;--xp-paper:#f4f5f4;--xp-card:#ffffff;--xp-ink:#172635;--xp-soft:#344657;--xp-muted:#4a5a66;--xp-line:#dce2e5;--xp-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--xp-ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+  .xp-wrap *{box-sizing:border-box}
+  .xp-board{background:var(--xp-navy);border-radius:12px;padding:28px 22px;color:#eaf2f6;overflow:hidden}
+  .xp-eyebrow{font-family:var(--xp-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9ec3d8;margin:0 0 8px}
+  .xp-title{font-family:Georgia,serif;font-size:40px;line-height:1.05;margin:0;max-width:720px}
+  .xp-title em{font-style:normal;color:var(--xp-amber)}
+  .xp-lede{color:#c8dce8;max-width:720px;font-size:17px}
+  .xp-readout{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 8px}
+  .xp-readout div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:12px 14px}
+  .xp-readout b{display:block;font-family:var(--xp-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9ec3d8}
+  .xp-readout span{font-weight:700}
+  .xp-filterbar{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+  .xp-wrap>input{position:absolute;opacity:0;pointer-events:none}
+  .xp-filterbar label{border:1.5px solid rgba(255,255,255,.35);padding:9px 14px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;background:transparent;color:#eaf2f6}
+  #xp-all:checked~.xp-board .xp-filterbar label[for="xp-all"],#xp-platforms:checked~.xp-board .xp-filterbar label[for="xp-platforms"],#xp-apps:checked~.xp-board .xp-filterbar label[for="xp-apps"],#xp-bi:checked~.xp-board .xp-filterbar label[for="xp-bi"],#xp-migration:checked~.xp-board .xp-filterbar label[for="xp-migration"]{background:#fff;color:var(--xp-navy);border-color:#fff}
+  #xp-platforms:checked~.xp-board .xp-mission:not([data-track="platforms"]),#xp-apps:checked~.xp-board .xp-mission:not([data-track="apps"]),#xp-bi:checked~.xp-board .xp-mission:not([data-track="bi"]),#xp-migration:checked~.xp-board .xp-mission:not([data-track="migration"]){display:none}
+  .xp-timeline{position:relative;margin-top:24px;padding-left:34px}
+  .xp-timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:3px;background:var(--xp-accent)}
+  .xp-mission{position:relative;background:var(--xp-card);color:var(--xp-ink);border:1px solid var(--xp-line);border-radius:12px;padding:22px;margin:0 0 22px;transition:transform .18s,box-shadow .18s}
+  .xp-mission:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(0,0,0,.35)}
+  .xp-mission::before{content:"";position:absolute;left:-30px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--xp-amber);border:4px solid var(--xp-navy);box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+  .xp-mission.is-past::before{background:var(--xp-accent)}
+  .xp-mhead{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start;justify-content:space-between}
+  .xp-org{font-family:Georgia,serif;font-size:28px;margin:0;line-height:1.1}
+  .xp-role{font-weight:700;font-size:17px;margin:2px 0 0}
+  .xp-meta{font-family:var(--xp-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--xp-muted)}
+  .xp-badge{display:inline-block;font-family:var(--xp-mono);font-size:11px;letter-spacing:.12em;font-weight:700;padding:6px 10px;border-radius:999px;background:#eaf2f6;color:var(--xp-navy);border:1px solid var(--xp-line)}
+  .xp-badge.live{background:#eaf2f6;color:#344657;border-color:#c8dce8}
+  .xp-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0}
+  .xp-step{background:var(--xp-navy);color:#fff;padding:9px 12px;border-radius:6px;font-size:13px;font-weight:700;transition:background .15s,transform .15s}
+  .xp-step:hover{background:var(--xp-accent);transform:translateY(-2px)}
+  .xp-arrow{color:var(--xp-accent);font-weight:900}
+  .xp-crud{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+  .xp-crud span{border:1.5px solid var(--xp-accent);color:var(--xp-navy);border-radius:6px;padding:5px 9px;font-family:var(--xp-mono);font-size:12px;font-weight:700}
+  .xp-chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+  .xp-chips span{background:#eef3f6;border:1px solid var(--xp-line);border-radius:999px;padding:5px 11px;font-size:13px}
+  .xp-mission details{border-top:1px solid var(--xp-line);margin-top:14px;padding-top:12px}
+  .xp-mission summary{font-weight:800;cursor:pointer;color:var(--xp-navy)}
+  .xp-scale{height:10px;background:#e8eef2;border-radius:999px;overflow:hidden;margin:8px 0}
+  .xp-scale i{display:block;height:100%;width:88%;background:var(--xp-accent)}
+  .xp-dial{width:110px;height:110px;border-radius:50%;background:conic-gradient(var(--xp-amber) 0 75%,#e8eef2 75% 100%);display:grid;place-items:center;margin:12px 0}
+  .xp-dial b{background:#fff;width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-size:22px;color:var(--xp-navy)}
+  .xp-through{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+  .xp-through div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:16px}
+  .xp-through h3{margin:0 0 6px;font-size:16px}
+  .xp-through p{margin:0;color:#c8dce8;font-size:14px}
+  .xp-note{font-size:13px;color:#9ec3d8;margin-top:18px}
+  .xp-note a{color:#fff}
+  @media(max-width:760px){.xp-title{font-size:32px}.xp-readout,.xp-through{grid-template-columns:1fr 1fr}.xp-board{padding:22px 14px}.xp-timeline{padding-left:28px}}
+  @media(prefers-reduced-motion:reduce){.xp-mission,.xp-step{transition:none}.xp-mission:hover,.xp-step:hover{transform:none}}
+</style>
+<style>
+  .pt-panel{--pt-navy:#142a3d;--pt-navy2:#203d55;--pt-accent:#236b91;--pt-ink:#172635;--pt-soft:#344657;--pt-muted:#4a5a66;--pt-line:#dce2e5;--pt-page:#f4f5f4;--pt-surface:#fff;--pt-root:#236b91;--pt-root-tint:#eaf2f6;--pt-branch:#236b91;--pt-branch-tint:#eaf2f6;--pt-leaf:#236b91;--pt-leaf-tint:#eaf2f6;--pt-canopy:#236b91;--pt-canopy-tint:#eaf2f6;color:var(--pt-ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+  .pt-panel *{box-sizing:border-box}
+  .pt-panel a{color:var(--pt-accent)}
+  .pt-panel .pt-head{border-top:1px solid var(--pt-line);background:var(--pt-navy);color:#fff;padding:28px 24px 24px;border-radius:6px}
+  .pt-panel .pt-kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#9fc3d8;margin:0 0 8px}
+  .pt-panel .pt-head h2{font-size:38px;line-height:1.05;margin:0 0 10px}
+  .pt-panel .pt-head p{margin:0;color:#dbe7ee;max-width:760px}
+  .pt-panel .pt-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+  .pt-panel .pt-stat{background:var(--pt-surface);border:1px solid var(--pt-line);border-top:4px solid var(--pt-navy);border-radius:6px;padding:14px 16px}
+  .pt-panel .pt-stat b{display:block;font-size:28px;line-height:1;color:var(--pt-navy)}
+  .pt-panel .pt-stat span{font-size:13px;color:var(--pt-muted)}
+  .pt-panel .pt-legend{background:var(--pt-surface);border:1px solid var(--pt-line);border-radius:6px;padding:16px 18px;margin:16px 0;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px}
+  .pt-panel .pt-legend a{text-decoration:none;font-weight:700}
+  .pt-panel .pt-legend .pt-dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  .pt-panel .pt-note{font-size:14px;color:var(--pt-muted)}
+  /* Trunk: one continuous line down the left, branches hang off it */
+  .pt-panel .pt-tree{position:relative;margin:28px 0 8px;padding-left:34px;border-left:4px solid var(--pt-navy)}
+  .pt-panel .pt-trunk-cap{display:flex;gap:12px;align-items:flex-start;margin:0 0 8px}
+  .pt-panel .pt-trunk-cap>span{width:44px;height:44px;border-radius:50%;background:var(--pt-navy);color:#fff;display:grid;place-items:center;font-weight:800;flex:0 0 44px}
+  .pt-panel .pt-trunk-cap>div{min-width:0;flex:1}
+  .pt-panel .pt-trunk-cap>div span.pt-note{width:auto;height:auto;background:transparent;color:var(--pt-muted);display:inline;font-weight:400}
+  .pt-panel .pt-branch{margin:30px 0}
+  .pt-panel .pt-branch summary{list-style:none;cursor:pointer}
+  .pt-panel .pt-branch summary::-webkit-details-marker{display:none}
+  .pt-panel .pt-branch-head{border-radius:6px;padding:18px 20px;position:relative}
+  .pt-panel .pt-branch-head h3{margin:0;font-size:22px}
+  .pt-panel .pt-branch-head p{margin:4px 0 0}
+  .pt-panel .pt-branch-head .pt-count{position:absolute;right:18px;top:18px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .pt-panel .pt-branch-head .pt-toggle{font-size:13px;font-weight:700}
+  .pt-panel .pt-roots .pt-branch-head{background:var(--pt-root-tint);border:1px solid #eaf2f6;color:var(--pt-root)}
+  .pt-panel .pt-branches .pt-branch-head{background:var(--pt-branch-tint);border:1px solid #eaf2f6;color:var(--pt-branch)}
+  .pt-panel .pt-leaves .pt-branch-head{background:var(--pt-leaf-tint);border:1px solid #eaf2f6;color:var(--pt-leaf)}
+  .pt-panel .pt-canopy .pt-branch-head{background:var(--pt-canopy-tint);border:1px solid #eaf2f6;color:var(--pt-canopy)}
+  .pt-panel .pt-nodes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .pt-panel .pt-node{position:relative;background:var(--pt-surface);border:1px solid var(--pt-line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
+  .pt-panel .pt-node:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(20,42,61,.15)}
+  .pt-panel .pt-node::before{content:"";position:absolute;left:-27px;top:22px;width:15px;height:15px;border-radius:50%;background:var(--pt-accent);border:3px solid var(--pt-page);z-index:2}
+  .pt-panel .pt-roots .pt-node::before{background:var(--pt-root)}
+  .pt-panel .pt-branches .pt-node::before{background:var(--pt-branch)}
+  .pt-panel .pt-leaves .pt-node::before{background:var(--pt-leaf)}
+  .pt-panel .pt-canopy .pt-node::before{background:var(--pt-canopy)}
+  .pt-panel .pt-node img{width:100%;height:168px;object-fit:cover;display:block;background:#dce2e5;transition:transform .25s}
+  .pt-panel .pt-node:hover img{transform:scale(1.03)}
+  .pt-panel .pt-mono{height:168px;display:grid;place-items:center;background:var(--pt-navy);color:#fff;font-size:52px;font-weight:800;letter-spacing:.05em}
+  .pt-panel .pt-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .pt-panel .pt-num{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--pt-muted)}
+  .pt-panel .pt-body h4{margin:0;font-size:18px;line-height:1.25}
+  .pt-panel .pt-body p{margin:0;color:var(--pt-soft);font-size:15px}
+  .pt-panel .pt-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:8px}
+  .pt-panel .pt-chips span{font-size:12px;font-weight:700;border:1px solid var(--pt-line);border-radius:999px;padding:3px 9px;background:var(--pt-page)}
+  .pt-panel .pt-crud{font-size:12px;font-weight:800;letter-spacing:.08em}
+  .pt-panel .pt-crud em{font-style:normal;color:var(--pt-root)}
+  .pt-panel .pt-source{background:var(--pt-navy);color:#dbe7ee;border-radius:6px;padding:20px 22px;margin-top:28px}
+  .pt-panel .pt-source h3{color:#fff;margin:0 0 8px}
+  .pt-panel .pt-source a{color:#9fc3d8}
+  .pt-panel .pt-source p{margin:6px 0}
+  @media(max-width:700px){.pt-panel .pt-stats{grid-template-columns:1fr 1fr}.pt-panel .pt-nodes{grid-template-columns:1fr}.pt-panel .pt-head h2{font-size:30px}.pt-panel .pt-tree{padding-left:24px}.pt-panel .pt-node::before{left:-22px}}
+  @media(prefers-reduced-motion:reduce){.pt-panel .pt-node,.pt-panel .pt-node img{transition:none}.pt-panel .pt-node:hover{transform:none}}
+</style>
+<style>
+  .ml-lab { --ml-navy:#142a3d; --ml-navy2:#142a3d; --ml-teal:#236b91; --ml-teal-dim:#236b91;
+    --ml-amber:#236b91; --ml-paper:#f4f5f4; --ml-card:#ffffff; --ml-ink:#172635; --ml-soft:#344657;
+    --ml-muted:#4a5a66; --ml-line:#dce2e5; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ml-ink); line-height: 1.6; }
+  .ml-lab * { box-sizing: border-box; }
+  .ml-lab a { color: inherit; }
+
+  /* ---- Lab header: dark navy, solid navy, oversized display type ---- */
+  .ml-lab__header { background: var(--ml-navy);
+    color: #fff; padding: 44px 32px 36px; border-radius: 14px; overflow: hidden; position: relative; }
+  .ml-lab__header::after { content: "β  ·  λ  ·  G1  ·  G2"; position: absolute; right: 24px; bottom: 14px;
+    font-family: Georgia, serif; font-style: italic; letter-spacing: .18em; color: rgba(255,255,255,.35); font-size: 13px; }
+  .ml-lab__eyebrow { margin: 0 0 10px; color: var(--ml-teal); font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+  .ml-lab__header h2 { margin: 0; font-size: clamp(38px, 6vw, 64px); line-height: .98; letter-spacing: -.04em; font-weight: 800; }
+  .ml-lab__header h2 em { color: var(--ml-teal); font-style: normal; }
+  .ml-lab__header p { max-width: 640px; color: #c0ced8; font-size: 15px; margin: 16px 0 0; }
+  .ml-lab__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .ml-lab__chip { border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 6px 13px; font-size: 12px; font-weight: 700; }
+  .ml-lab__chip b { color: var(--ml-teal); }
+  .ml-lab__chip--amber { border-color: var(--ml-amber); }
+  .ml-lab__chip--amber b { color: var(--ml-amber); }
+
+  /* ---- Section scaffolding ---- */
+  .ml-lab__body { padding: 32px 4px 8px; }
+  .ml-lab__kicker { color: var(--ml-teal-dim); font-size: 11px; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; margin: 0 0 6px; }
+  .ml-lab__h3 { color: var(--ml-navy); font-size: clamp(24px, 3.4vw, 34px); letter-spacing: -.03em; line-height: 1.1; margin: 0 0 10px; }
+  .ml-lab__lede { color: var(--ml-soft); font-size: 14px; max-width: 720px; margin: 0 0 22px; }
+  .ml-lab__note { font-size: 12px; color: var(--ml-muted); line-height: 1.7; }
+
+  /* ---- Methods pipeline diagram ---- */
+  .ml-lab__pipe { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin: 8px 0 28px; }
+  .ml-lab__step { position: relative; background: var(--ml-card); border: 1px solid var(--ml-line); border-left: none; padding: 16px 14px 16px 22px; min-height: 132px; }
+  .ml-lab__step:first-child { border-left: 1px solid var(--ml-line); border-radius: 10px 0 0 10px; }
+  .ml-lab__step:last-child { border-radius: 0 10px 10px 0; background: #eaf2f6; }
+  .ml-lab__step::after { content: "→"; position: absolute; right: -11px; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 22px; height: 22px; border-radius: 50%; background: var(--ml-navy); color: #fff; display: grid; place-items: center; font-size: 13px; }
+  .ml-lab__step:last-child::after { content: none; }
+  .ml-lab__stepnum { display: block; color: var(--ml-teal-dim); font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+  .ml-lab__step h4 { margin: 6px 0 4px; color: var(--ml-navy); font-size: 14px; line-height: 1.3; }
+  .ml-lab__step p { margin: 0; font-size: 12px; color: var(--ml-soft); line-height: 1.55; }
+  .ml-lab__step code { font-size: 11px; color: var(--ml-teal-dim); background: #eaf2f6; padding: 1px 5px; border-radius: 3px; }
+
+  /* ---- Lead experiment: split layout ---- */
+  .ml-lab__lead { display: grid; grid-template-columns: 1.05fr .95fr; gap: 24px; margin-bottom: 28px; }
+  .ml-lab__card { background: var(--ml-card); border: 1px solid var(--ml-line); border-radius: 12px; padding: 24px; }
+  .ml-lab__card--dark { background: var(--ml-navy); color: #fff; border-color: var(--ml-navy); }
+  .ml-lab__card--dark h4 { color: #fff; }
+  .ml-lab__card--dark p { color: #c0ced8; }
+  .ml-lab__card h4 { margin: 0 0 8px; color: var(--ml-navy); font-size: 18px; letter-spacing: -.02em; }
+  .ml-lab__card p { font-size: 13px; color: var(--ml-soft); margin: 0 0 10px; }
+  .ml-lab__badge { display: inline-block; background: var(--ml-amber); color: #142a3d; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; margin-bottom: 12px; }
+  .ml-lab__badge--teal { background: var(--ml-teal); color: #142a3d; }
+  .ml-lab__badge--ghost { background: transparent; border: 1.5px solid var(--ml-teal); color: var(--ml-teal); }
+
+  /* ---- Test-set comparison bars (CSS only, figures given, nothing invented) ---- */
+  .ml-lab__bars { margin: 6px 0 4px; }
+  .ml-lab__bar-row { display: grid; grid-template-columns: 150px 1fr 74px; gap: 12px; align-items: center; margin: 14px 0; }
+  .ml-lab__bar-label { font-size: 13px; font-weight: 700; color: var(--ml-navy); line-height: 1.3; }
+  .ml-lab__bar-label span { display: block; font-size: 11px; font-weight: 600; color: var(--ml-muted); }
+  .ml-lab__bar-track { height: 26px; background: #e9edef; border-radius: 999px; overflow: hidden; }
+  .ml-lab__bar-fill { height: 100%; border-radius: 999px; }
+  .ml-lab__bar-fill--kevin { width: 88%; background: linear-gradient(90deg, #236b91, #236b91); }
+  .ml-lab__bar-fill--team { width: 83%; background: linear-gradient(90deg, #236b91, #236b91); }
+  .ml-lab__bar-fill--hatched { width: 100%; background: repeating-linear-gradient(-45deg, #dce2e5 0 10px, #e9edef 10px 20px); border: 1px dashed #4a5a66; }
+  .ml-lab__bar-value { font-weight: 800; color: var(--ml-navy); font-size: 15px; text-align: right; }
+  .ml-lab__bar-value small { display: block; font-size: 10px; color: var(--ml-muted); font-weight: 600; }
+
+  /* ---- Attribution ledger ---- */
+  .ml-lab__ledger { width: 100%; border-collapse: collapse; font-size: 13px; margin: 6px 0; }
+  .ml-lab__ledger th { text-align: left; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ml-muted); padding: 10px 12px; border-bottom: 2px solid var(--ml-navy); }
+  .ml-lab__ledger td { padding: 12px; border-bottom: 1px solid var(--ml-line); color: var(--ml-soft); vertical-align: top; }
+  .ml-lab__ledger td:first-child { color: var(--ml-navy); font-weight: 750; }
+  .ml-lab__ledger tr.ml-lab__kevin td { background: #eaf2f6; }
+  .ml-lab__ledger tr.ml-lab__kevin td:first-child::before { content: "★ "; color: var(--ml-amber); }
+
+  /* ---- Feature evidence strip ---- */
+  .ml-lab__features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 20px 0 28px; }
+  .ml-lab__feat { border: 1px solid var(--ml-line); border-top: 5px solid var(--ml-teal); border-radius: 10px; padding: 18px; background: var(--ml-card); }
+  .ml-lab__feat--top { border-top-color: var(--ml-amber); background: #eaf2f6; }
+  .ml-lab__feat b { display: block; font-size: 26px; color: var(--ml-navy); letter-spacing: -.03em; }
+  .ml-lab__feat span { font-size: 12px; color: var(--ml-soft); }
+
+  /* ---- Secondary experiments ---- */
+  .ml-lab__duo { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0 28px; }
+  .ml-lab__stamp { display: inline-block; border: 2px solid #4a5a66; color: #344657; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 7px 12px; border-radius: 6px; transform: rotate(-1.5deg); margin: 10px 0; }
+  .ml-lab__balance { display: flex; align-items: center; gap: 10px; margin: 14px 0; }
+  .ml-lab__balance i { flex: 1; height: 10px; background: var(--ml-teal); border-radius: 999px; opacity: .85; }
+  .ml-lab__balance i:last-child { opacity: .6; }
+  .ml-lab__balance b { font-size: 20px; color: var(--ml-navy); }
+
+  /* ---- Reading guide ---- */
+  .ml-lab__guide { background: #eaf2f6; border: 1px solid #c8dce8; border-radius: 12px; padding: 22px 24px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .ml-lab__guide h4 { margin: 0 0 6px; color: var(--ml-navy); font-size: 13px; }
+  .ml-lab__guide p { margin: 0; font-size: 12px; color: var(--ml-soft); }
+
+  @media (max-width: 900px) {
+    .ml-lab__pipe { grid-template-columns: 1fr 1fr 1fr; }
+    .ml-lab__step:nth-child(3) { border-radius: 0 10px 10px 0; }
+    .ml-lab__step:nth-child(4) { border-left: 1px solid var(--ml-line); }
+    .ml-lab__lead, .ml-lab__duo, .ml-lab__guide { grid-template-columns: 1fr; }
+    .ml-lab__features { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .ml-lab__pipe { grid-template-columns: 1fr; }
+    .ml-lab__step { border-left: 1px solid var(--ml-line); border-top: none; min-height: auto; }
+    .ml-lab__step:first-child { border-top: 1px solid var(--ml-line); border-radius: 10px 10px 0 0; }
+    .ml-lab__step:last-child { border-radius: 0 0 10px 10px; }
+    .ml-lab__step::after { content: "↓"; right: 50%; top: auto; bottom: -11px; transform: translateX(50%); }
+    .ml-lab__step:last-child::after { content: none; }
+    .ml-lab__bar-row { grid-template-columns: 1fr 64px; }
+    .ml-lab__bar-track { grid-column: 1 / -1; }
+    .ml-lab__header { padding: 32px 20px; }
+    .ml-lab__header::after { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ml-lab * { transition: none !important; animation: none !important; } }
+</style>
+<style>
+  .cap-wrap{--navy:#142a3d;--navy2:#203d55;--page:#f4f5f4;--ink:#172635;--soft:#344657;--muted:#4a5a66;--line:#dce2e5;--teal:#236b91;--teal-bg:#eaf2f6;--amber:#236b91;--amber-bg:#eaf2f6;--card:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.6}
+  .cap-wrap *{box-sizing:border-box}
+  .cap-wrap a{color:var(--navy)}
+  .cap-head{background:var(--navy);color:#fff;border-radius:10px;padding:30px 28px 24px;position:relative;overflow:hidden}
+  .cap-head::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border:2px solid rgba(255,255,255,.18);border-radius:50%}
+  .cap-head::before{content:"";position:absolute;right:10px;top:30px;width:90px;height:90px;border:2px solid rgba(255,255,255,.14);border-radius:50%}
+  .cap-kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#236b91;font-weight:700;margin:0 0 8px}
+  .cap-head h2{font-size:34px;line-height:1.1;margin:0 0 10px;max-width:640px}
+  .cap-head p{color:#d6e2ea;max-width:720px;margin:0}
+  .cap-ribbon{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:20px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+  .cap-stage{padding:16px 18px;border-right:1px solid var(--line)}
+  .cap-stage:last-child{border-right:0}
+  .cap-stage b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .cap-stage span{font-size:14px;color:var(--muted)}
+  .cap-stage:nth-child(1) b{color:var(--teal)} .cap-stage:nth-child(2) b{color:var(--navy)} .cap-stage:nth-child(3) b{color:var(--amber)} .cap-stage:nth-child(4) b{color:var(--teal)}
+  .cap-stage i{display:block;font-style:normal;font-size:22px;margin-bottom:2px}
+  .cap-legend{background:var(--teal-bg);border:1px solid #c8dce8;border-radius:8px;padding:12px 16px;font-size:14px;margin:0 0 20px}
+  .cap-legend b{color:var(--navy)}
+  .cap-matrix{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:22px}
+  .cap-matrix table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+  .cap-matrix th,.cap-matrix td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .cap-matrix thead th{background:var(--navy);color:#fff;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+  .cap-matrix tbody tr:last-child td{border-bottom:0}
+  .cap-matrix td.skill{font-weight:700;white-space:nowrap}
+  .cap-matrix td.skill small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+  .cap-dot{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;background:var(--teal);color:#fff;font-size:13px;font-weight:700}
+  .cap-dot.amber{background:var(--amber)}
+  .cap-dot.none{background:#eef1f3;color:#9aa8b1}
+  .cap-groups{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
+  .cap-group{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px}
+  .cap-group h3{margin:0 0 4px;font-size:19px}
+  .cap-group h3 span{color:var(--teal)}
+  .cap-group p{color:var(--soft);margin:0 0 10px}
+  .cap-group details{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}
+  .cap-group summary{font-weight:700;cursor:pointer;color:var(--navy)}
+  .cap-group ul{margin:10px 0 0;padding-left:20px;color:var(--soft)}
+  .cap-group li{margin:5px 0}
+  .cap-foot{background:var(--amber-bg);border:1px solid #c8dce8;border-radius:10px;padding:18px 20px}
+  .cap-foot h3{margin:0 0 6px}
+  .cap-foot p{margin:0;color:var(--soft)}
+  @media(max-width:800px){.cap-ribbon{grid-template-columns:1fr 1fr}.cap-groups{grid-template-columns:1fr}.cap-head h2{font-size:28px}}
+  @media(max-width:520px){.cap-ribbon{grid-template-columns:1fr}}
+</style>
+<style>
+  .cred-wrap{--navy:#142a3d;--navy2:#203d55;--paper:#f4f5f4;--paper2:#eaf2f6;--ink:#172635;--soft:#344657;--muted:#4a5a66;--gold:#236b91;--gold2:#236b91;--line:#dce2e5;--card:#ffffff;font-family:Georgia,"Times New Roman",serif;color:var(--ink);line-height:1.6}
+  .cred-wrap *{box-sizing:border-box}
+  .cred-wrap a{color:var(--navy)}
+  .cred-wrap p,.cred-wrap li,.cred-wrap span.cred-note{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+  .cred-head{background:var(--navy);color:#fff;border-radius:12px;padding:34px 30px 26px;border-bottom:6px solid var(--gold)}
+  .cred-kicker{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#236b91;font-weight:700;margin:0 0 10px}
+  .cred-head h2{font-size:36px;line-height:1.1;margin:0 0 10px;font-weight:700}
+  .cred-head p{color:#d6e2ea;max-width:720px;margin:0}
+  .cred-wall{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:26px;margin-top:20px}
+  .cred-wall-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:20px}
+  .cred-wall-head h3{margin:0;font-size:22px}
+  .cred-wall-head span{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:13px;color:var(--muted)}
+  .cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .cred-card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:8px;padding:22px 22px 18px;position:relative;box-shadow:0 2px 0 rgba(20,42,61,.06)}
+  .cred-card.featured{grid-column:1 / -1;background:var(--navy);color:#fff;border-top-color:var(--gold)}
+  .cred-card.featured p{color:#d6e2ea}
+  .cred-card.featured .cred-type{color:#c8dce8}
+  .cred-seal{position:absolute;top:18px;right:18px;width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--paper2)}
+  .cred-card.featured .cred-seal{background:transparent;color:#c8dce8;border-color:#c8dce8}
+  .cred-type{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);font-weight:700;margin:0 0 6px}
+  .cred-card h3{font-size:26px;line-height:1.15;margin:0 0 8px;padding-right:60px}
+  .cred-card p{color:var(--soft);margin:0 0 12px}
+  .cred-ribbon{display:inline-block;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:12px;font-weight:700;background:var(--paper2);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+  .cred-card.featured .cred-ribbon{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#fff}
+  .cred-note{display:block;font-size:13px;color:var(--muted);margin-top:12px}
+  .cred-card.featured .cred-note{color:#aebfcd}
+  .cred-ledger{margin-top:22px;border-top:1px solid var(--line);padding-top:16px}
+  .cred-ledger h3{font-size:20px;margin:0 0 8px}
+  .cred-ledger ul{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:var(--soft);margin:0;padding-left:20px}
+  .cred-ledger li{margin:6px 0}
+  .cred-foot{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .cred-foot p{margin:0;color:var(--soft)}
+  @media(max-width:700px){.cred-grid{grid-template-columns:1fr}.cred-head h2{font-size:29px}.cred-card.featured{grid-column:auto}}
+</style>
+<style>
+  .v4-attic { background:#142a3d; color:#f4f5f4; padding:36px 0 8px; }
+  .v4-attic-inner { max-width:1160px; margin:0 auto; padding:0 6%; }
+  .v4-attic-kicker { letter-spacing:.14em; text-transform:uppercase; font-size:12px; font-weight:800; color:#8fc3dc; margin:0; }
+  .v4-attic h2 { font-family:Georgia,serif; font-size:clamp(34px,5vw,56px); line-height:1.05; margin:8px 0 10px; }
+  
+  
+  @media (max-width:820px) {  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .v4-attic-shelf { margin:34px 0 8px; }
+  .v4-attic-shelf h3 { font-size:20px; margin:0 0 4px; }
+  .v4-attic-shelf > p { color:#9db6c6; margin:0 0 16px; font-size:14px; }
+  .v4-attic-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  @media (max-width:760px) { .v4-attic-grid { grid-template-columns:1fr; } }
+  .v4-attic-card { background:#eaf2f6; color:#172635; border-radius:8px; padding:20px 22px 18px; position:relative;
+    border-top:5px solid #236b91; box-shadow:0 8px 22px rgba(0,0,0,.22); scroll-margin-top:110px; }
+  .v4-attic-card:hover { transform:translateY(-3px); box-shadow:0 14px 28px rgba(0,0,0,.30); transition:transform .18s, box-shadow .18s; }
+  .v4-attic-call { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .v4-attic-call b { font-family:Georgia,serif; font-size:22px; color:#236b91; }
+  .v4-attic-stamp { font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase;
+    border:1.5px solid #236b91; color:#344657; border-radius:4px; padding:4px 8px; text-align:center; }
+  .v4-attic-stamp.warn { border-color:#236b91; color:#236b91; }
+  .v4-attic-card h4 { font-size:19px; margin:12px 0 6px; }
+  .v4-attic-card p { color:#344657; line-height:1.6; margin:6px 0; font-size:15px; }
+  .v4-attic-meta { font-size:13px; color:#4a5a66; border-top:1px dashed #c8dce8; padding-top:10px; margin-top:12px; }
+  .v4-attic-card a { color:#142a3d; font-weight:700; }
+  .v4-attic-foot { color:#203d55; font-size:14px; max-width:780px; margin:28px 0 10px; line-height:1.6; }
+  @media (prefers-reduced-motion:reduce) { .v4-attic-card:hover { transform:none; } }
+</style>
+<style>
+  .cd-wrap { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #172635; background: #f4f5f4; border: 1px solid #dce2e5; border-radius: 10px; overflow: hidden; }
+  .cd-wrap * { box-sizing: border-box; }
+  .cd-hero { background: #142a3d; color: #fff; padding: 28px 24px 22px; }
+  .cd-demo { display: inline-block; background: #8fc3dc; color: #142a3d; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; }
+  .cd-hero h2 { font-size: 34px; line-height: 1.1; margin: 12px 0 6px; }
+  .cd-hero p { margin: 6px 0; color: #d7e6ee; max-width: 760px; }
+  .cd-hero a { color: #fff; }
+  .cd-live { display: inline-flex; gap: 8px; align-items: center; font-size: 13px; font-weight: 700; }
+  .cd-dot { width: 10px; height: 10px; border-radius: 50%; background: #236b91; display: inline-block; }
+  .cd-body { padding: 22px 24px 24px; }
+  .cd-grid { display: grid; grid-template-columns: 1.2fr 2fr; gap: 20px; }
+  @media (max-width: 800px) { .cd-grid { grid-template-columns: 1fr; } .cd-hero h2 { font-size: 28px; } }
+  .cd-current { background: #fff; border: 1px solid #dce2e5; border-radius: 8px; padding: 20px; }
+  .cd-temp { font-size: 64px; font-weight: 800; line-height: 1; color: #142a3d; }
+  .cd-temp small { font-size: 28px; }
+  .cd-condition { font-size: 19px; font-weight: 700; margin: 8px 0 2px; }
+  .cd-meta { color: #4a5a66; font-size: 14px; }
+  .cd-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .cd-stat { background: #eaf2f6; border-radius: 6px; padding: 12px; }
+  .cd-stat b { display: block; font-size: 20px; color: #142a3d; }
+  .cd-stat span { font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #236b91; }
+  .cd-panel { background: #fff; border: 1px solid #dce2e5; border-radius: 8px; padding: 20px; }
+  .cd-panel h3 { margin: 0 0 6px; font-size: 19px; color: #142a3d; }
+  .cd-panel p { color: #344657; margin: 6px 0; }
+  .cd-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin: 16px 0; }
+  @media (max-width: 800px) { .cd-strip { grid-template-columns: repeat(2, 1fr); } }
+  .cd-day { border: 1px solid #dce2e5; border-radius: 8px; padding: 12px; text-align: center; background: #fff; }
+  .cd-day.today { border-color: #236b91; box-shadow: 0 0 0 2px #eaf2f6; }
+  .cd-day b { display: block; color: #142a3d; }
+  .cd-day .cd-hi { color: #142a3d; font-weight: 800; }
+  .cd-day .cd-lo { color: #236b91; font-weight: 800; }
+  .cd-range { height: 8px; background: #eaf2f6; border-radius: 999px; margin: 10px 0; position: relative; overflow: hidden; }
+  .cd-range i { display: block; position: absolute; top: 0; bottom: 0; background: #236b91; border-radius: 999px; }
+  .cd-chart { width: 100%; height: auto; display: block; background: #fbfcfc; border: 1px solid #dce2e5; border-radius: 8px; }
+  .cd-legend { font-size: 13px; color: #4a5a66; }
+  .cd-legend i { display: inline-block; width: 18px; height: 4px; border-radius: 2px; vertical-align: middle; margin: 0 4px 0 12px; }
+  .cd-table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 14px; }
+  .cd-table th, .cd-table td { border-bottom: 1px solid #dce2e5; padding: 8px 10px; text-align: left; }
+  .cd-table th { color: #236b91; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
+  .cd-btn { background: #142a3d; color: #fff; border: 0; border-radius: 6px; padding: 10px 16px; font-weight: 700; cursor: pointer; }
+  .cd-fallback { display: none; background: #eaf2f6; border: 1px solid #c8dce8; border-radius: 8px; padding: 16px; margin-top: 16px; }
+  .cd-fallback.show { display: block; }
+  .cd-foot { font-size: 13px; color: #4a5a66; margin-top: 16px; }
+  @media (prefers-reduced-motion: reduce) { .cd-dot { animation: none; } }
+</style>
+<style>
+
+  </style>
+</head>
+
+<body id="top">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ========================= HEADER ========================= -->
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a class="brand" href="#top" aria-label="Kevin Duy — back to top">
+        <span class="brand-name">KEVIN DUY</span>
+        <span class="brand-description">Data · Engineering · Analytics</span>
+      </a>
+
+      <a
+        class="header-link"
+        href="https://www.linkedin.com/in/kevinduy231"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View Kevin Duy on LinkedIn"
+      >
+        LinkedIn ↗
+      </a>
+
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- =========================== HERO ========================= -->
+
+<header class="v4-hero" aria-labelledby="v4-hero-title">
+  <div class="v4-hero-inner">
+    <div>
+      <p class="v4-hero-eyebrow">Tampa, Florida · MacDill AFB</p>
+      <p class="v4-hero-name">Kevin Duy</p>
+      <h1 id="v4-hero-title">Make data<br><em>work.</em></h1>
+      <p class="v4-hero-role">Data Scientist &nbsp;|&nbsp; Data Engineer &nbsp;|&nbsp; Analytics Engineer</p>
+      <p class="v4-hero-summary">Clarity Data Scientist building Foundry/Maven, Streamlit/Shiny, and PostgreSQL CRUD apps in a cleared environment at MacDill AFB.</p>
+      <div class="v4-hero-actions">
+        <a class="v4-hero-cta" href="#kenz-tabs" data-tab="tab-work">Explore experience →</a>
+      </div>
+      <p class="v4-hero-guide">Start with experience, climb down the project tree, and end in Older Projects. The games are in the leaves.</p>
+    </div>
+
+    <aside class="v4-hero-ledger" aria-label="Professional snapshot">
+      <h3>Clearance ledger — verified, nothing more</h3>
+      <div class="v4-hero-row"><span>Clearance</span><b>Active TS/SCI</b></div>
+      <div class="v4-hero-row"><span>Certification</span><b>CompTIA Security+ · SY0-701</b></div>
+      <div class="v4-hero-row"><span>Graduate</span><b>MBA · Business Analytics · USF</b></div>
+      <div class="v4-hero-row"><span>Undergraduate</span><b>BS Data Science · Magna Cum Laude · USF</b></div>
+      <div class="v4-hero-row"><span>Contact</span><b>LinkedIn only</b></div>
+    </aside>
+
+    <div class="v4-hero-proof" aria-label="In thirty seconds">
+      <div><strong>1 · Full-stack data tools</strong></div>
+      <div><strong>2 · Cleared work, described plainly</strong></div>
+      <div><strong>3 · Tools people actually use</strong></div>
+    </div>
+  </div>
+</header>
+
+
+
+    <!-- ======================== SELECTED WORK =================== -->
+
+        <div class="kenz-tabs container" id="kenz-tabs">
+      <input type="radio" name="kenz-tab" id="tab-home" checked>
+      <input type="radio" name="kenz-tab" id="tab-projects">
+      <input type="radio" name="kenz-tab" id="tab-work">
+      <input type="radio" name="kenz-tab" id="tab-project">
+      <input type="radio" name="kenz-tab" id="tab-capabilities">
+      <input type="radio" name="kenz-tab" id="tab-credentials">
+      <input type="radio" name="kenz-tab" id="tab-archive">
+      <div class="kenz-tabbar">
+        <label for="tab-home">All spaces</label>
+        <label for="tab-work">Experience</label>
+        <label for="tab-projects">Projects</label>
+        <label for="tab-project">ML Master’s Projects</label>
+        <label for="tab-capabilities">Skills</label>
+        <label for="tab-credentials">Credentials</label>
+        <label for="tab-archive">Older Projects</label>
+      </div>
+      <div class="kenz-panels">
+        <div class="kenz-panel" id="panel-home">
+<section class="space-hub" aria-labelledby="space-hub-title">
+  <p class="space-kicker">Kevin Duy's portfolio</p>
+  <h2 id="space-hub-title">Enter a space</h2>
+  <p class="space-ai">Yes - I made this with AI</p>
+  <div class="space-grid">
+    <label for="tab-work" class="space-card"><span class="space-num">01</span><h3>Experience</h3><p>Four roles, newest first — Clarity, ALKU, KeHE, Mosaic, plus the 2023 internships.</p><span class="space-go">Enter &rarr;</span></label>
+    <label for="tab-projects" class="space-card"><span class="space-num">02</span><h3>Projects</h3><p>18 catalog builds in a tree going down — systems, sites, games, events and design.</p><span class="space-go">Enter &rarr;</span></label>
+    <label for="tab-project" class="space-card"><span class="space-num">03</span><h3>ML Master&rsquo;s Projects</h3><p>Grade predictive work, test-set only, with exact credit for who built what.</p><span class="space-go">Enter &rarr;</span></label>
+    <label for="tab-capabilities" class="space-card"><span class="space-num">04</span><h3>Skills</h3><p>Skill-to-evidence matrix — what was actually used, where, with no invented scores.</p><span class="space-go">Enter &rarr;</span></label>
+    <label for="tab-credentials" class="space-card"><span class="space-num">05</span><h3>Credentials</h3><p>Clearance, certification, and degrees, stated plainly with nothing more claimed.</p><span class="space-go">Enter &rarr;</span></label>
+    <label for="tab-archive" class="space-card"><span class="space-num">06</span><h3>Older Projects</h3><p>11 cards from earlier work, including the rebuilt climate dashboard demo.</p><span class="space-go">Enter &rarr;</span></label>
+  </div>
+</section>
+</div>
+        <div class="kenz-panel" id="panel-projects">
+<label for="tab-home" class="space-back">&larr; All spaces</label>
+<section class="pt-panel" aria-labelledby="pt-title">
+  <p class="pt-v2-note">Sample and client builds — not government work. Cleared work is in Experience.</p>
+  <header class="pt-head">
+    <p class="pt-kicker">Projects · The tree, growing down</p>
+    <h2 id="pt-title">Projects</h2>
+  </header>
+
+  <div class="pt-stats" aria-label="Tree at a glance">
+    <div class="pt-stat"><b>18</b><span>catalog builds, with thumbnails</span></div>
+    <div class="pt-stat"><b>20</b><span>nodes, including 2 named client builds</span></div>
+    <div class="pt-stat"><b>4</b><span>branches, collapsible below</span></div>
+  </div>
+
+  <nav class="pt-legend" aria-label="Jump to a branch">
+    <span>Jump to:</span>
+    <a href="#pt-roots"><span class="pt-dot" style="background:#236b91"></span>Roots</a>
+    <a href="#pt-branches"><span class="pt-dot" style="background:#236b91"></span>Branches</a>
+    <a href="#pt-leaves"><span class="pt-dot" style="background:#236b91"></span>Leaves</a>
+    <a href="#pt-canopy"><span class="pt-dot" style="background:#236b91"></span>Canopy</a>
+    <span class="pt-note">Tap a branch heading to collapse it. On phones, branches start collapsed except Roots.</span>
+  </nav>
+
+  <div class="pt-tree">
+
+    <!-- ROOTS -->
+    <div class="pt-branch pt-roots" id="pt-roots">
+      <details open>
+        <summary><div class="pt-branch-head"><span class="pt-count">7 nodes · R1–R7</span><h3>❖ Roots — systems that hold data</h3><p>A record, a status, an owner, and a report. Create it once, read it filtered, update it in place, delete or cancel it without breaking history. That pattern is the trunk of everything below.</p><p class="pt-toggle">Tap to collapse / expand ↕</p></div></summary>
+        <div class="pt-nodes">
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/scheduler.jpg" alt="Service Scheduler thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">R1 · Scheduling</span><h4>Service Scheduler</h4><p>Online scheduling for a local service business. Create, reschedule, and cancel bookings; read the calendar by day and provider.</p><p class="pt-crud"><em>C</em>reate booking · <em>R</em>ead calendar · <em>U</em>pdate time · <em>D</em>elete / cancel</p><div class="pt-chips"><span>Bookings</span><span>Calendar</span><span>Status</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/bluemoon-portal-1.jpg" alt="Management Portal thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">R2 · Portal</span><h4>Management Portal</h4><p>Behind-the-scenes bookings, clients, and scheduling. Add and edit clients, track bookings, change statuses.</p><p class="pt-crud"><em>C</em>reate client · <em>R</em>ead bookings · <em>U</em>pdate status · <em>D</em>elete record</p><div class="pt-chips"><span>Clients</span><span>Bookings</span><span>Portal</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/bluemoon-store.jpg" alt="Retail Storefront thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">R3 · Storefront</span><h4>Retail Storefront</h4><p>Digital storefront with product sales and downloads. Add, edit, and remove products; track orders.</p><p class="pt-crud"><em>C</em>reate product · <em>R</em>ead orders · <em>U</em>pdate listing · <em>D</em>elete product</p><div class="pt-chips"><span>Products</span><span>Orders</span><span>Downloads</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/chicago-1.jpg" alt="Logistics Tracker thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">R4 · Data</span><h4>Logistics Tracker</h4><p>Data management for daily briefings and expense logging. Create and update records, filter and report on them.</p><p class="pt-crud"><em>C</em>reate record · <em>R</em>ead briefings · <em>U</em>pdate expense · <em>D</em>elete entry</p><div class="pt-chips"><span>Briefings</span><span>Expenses</span><span>Reports</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/massage-1.jpg" alt="Accounting Portal thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">R5 · Finance</span><h4>Accounting Portal</h4><p>Track finances, generate invoices, run the books. Create invoices, record payments, update records.</p><p class="pt-crud"><em>C</em>reate invoice · <em>R</em>ead ledger · <em>U</em>pdate payment · <em>D</em>elete invoice</p><div class="pt-chips"><span>Invoices</span><span>Payments</span><span>Books</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/apex.jpg" alt="Mapping Application thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">R6 · Maps</span><h4>Mapping Application</h4><p>Connects users to local facilities with live maps — search, locate, and view facility details.</p><p class="pt-crud"><em>R</em>ead facilities · Search · Locate · View detail</p><div class="pt-chips"><span>Live maps</span><span>Facilities</span><span>Search</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/fire-tracker.jpg" alt="Budget Tracker thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">R7 · Finance + Data</span><h4>Budget Tracker</h4><p>Personal finance dashboard with live market data. Add transactions, track budgets, see the picture change.</p><p class="pt-crud"><em>C</em>reate transaction · <em>R</em>ead dashboard · <em>U</em>pdate budget · <em>D</em>elete transaction</p><div class="pt-chips"><span>Transactions</span><span>Budgets</span><span>Live market data</span></div></div></article>
+        </div>
+      </details>
+    </div>
+
+    <!-- BRANCHES -->
+    <div class="pt-branch pt-branches" id="pt-branches">
+      <details open>
+        <summary><div class="pt-branch-head"><span class="pt-count">5 nodes · B1–B5</span><h3>✦ Branches — sites people book and buy on</h3><p>Business sites with a clear next step, not a brochure that dead-ends. Book, buy, sign up, or ask — and the inquiry lands somewhere usable.</p><p class="pt-toggle">Tap to collapse / expand ↕</p></div></summary>
+        <div class="pt-nodes">
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/premium-flavor.jpg" alt="Lead Generation Page thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">B1 · Lead capture</span><h4>Lead Generation Page</h4><p>One page built to collect business inquiries, with a form that feeds a usable lead list.</p><div class="pt-chips"><span>Form</span><span>Lead list</span><span>Follow-up</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/sugarbliss.jpg" alt="Boutique Retail Site thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">B2 · Retail site</span><h4>Boutique Retail Site</h4><p>Promotional website for a local retail business, built around products and a clear next step.</p><div class="pt-chips"><span>Products</span><span>Promotion</span><span>Next step</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/koh-muay-thai.jpg" alt="Fitness Studio Site thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">B3 · Bookings</span><h4>Fitness Studio Site</h4><p>Class schedules and trial signups, made simple.</p><div class="pt-chips"><span>Class schedule</span><span>Trial signup</span></div></div></article>
+          <article class="pt-node"><div class="pt-mono" aria-hidden="true">PH</div><div class="pt-body"><span class="pt-num">B4 · Client · Website redo</span><h4>Palm Harbor Nail Studio</h4><p>Family-run Palm Harbor salon, hired 2026 for a full website redo. Shown with a monogram, not a borrowed screenshot — no separate catalog thumbnail exists for this client build.</p><div class="pt-chips"><span>Repo: kevindduy/nailstudio</span></div><p><a href="https://github.com/kevindduy/nailstudio" target="_blank" rel="noopener noreferrer">github.com/kevindduy/nailstudio</a></p></div></article>
+          <article class="pt-node"><div class="pt-mono" aria-hidden="true">SE</div><div class="pt-body"><span class="pt-num">B5 · Client · Website</span><h4>Sam's Elite Detailing</h4><p>Mobile / in-shop detailing, Wesley Chapel / Zephyrhills / Dade City / Land O' Lakes / Tampa.</p><div class="pt-chips"><span>Repo: kevindduy/sam_detailing</span></div><p><a href="https://github.com/kevindduy/sam_detailing" target="_blank" rel="noopener noreferrer">github.com/kevindduy/sam_detailing</a><br><a href="https://samselitedetailing.com" target="_blank" rel="noopener noreferrer">samselitedetailing.com</a></p></div></article>
+        </div>
+      </details>
+    </div>
+
+    <!-- LEAVES -->
+    <div class="pt-branch pt-leaves" id="pt-leaves">
+      <details open>
+        <summary><div class="pt-branch-head"><span class="pt-count">4 nodes · L1–L4</span><h3>✿ Leaves — games people play together</h3><p>Proof that a room full of phones can agree on something, in real time. Low-latency, lobby-based, phone-first — the same sync thinking as the Roots, played for fun.</p><p class="pt-toggle">Tap to collapse / expand ↕</p></div></summary>
+        <div class="pt-nodes">
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/imposter-1.jpg" alt="Social Deduction Game thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">L1 · Real-time</span><h4>Social Deduction Game</h4><p>Browser game with QR lobbies and live rounds.</p><div class="pt-chips"><span>QR lobby</span><span>Live rounds</span><span>Multiplayer</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/witlash-1.jpg" alt="Browser Party Game thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">L2 · Real-time</span><h4>Browser Party Game</h4><p>Low-latency web game for multiple players.</p><div class="pt-chips"><span>Low latency</span><span>Multiplayer</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/colorbattle.jpg" alt="Color Match System thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">L3 · Interactive</span><h4>Color Match System</h4><p>Central display, players join from their phones and match colours in real time.</p><div class="pt-chips"><span>Central display</span><span>Phone join</span><span>Real-time</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/wordbattle.jpg" alt="Word Puzzle Logic thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">L4 · Real-time</span><h4>Word Puzzle Logic</h4><p>Real-time syncing with 4-letter room codes.</p><div class="pt-chips"><span>4-letter code</span><span>Room sync</span></div></div></article>
+        </div>
+      </details>
+    </div>
+
+    <!-- CANOPY -->
+    <div class="pt-branch pt-canopy" id="pt-canopy">
+      <details open>
+        <summary><div class="pt-branch-head"><span class="pt-count">4 nodes · C1–C4</span><h3>☀ Canopy — events &amp; design</h3><p>The finishing branch: one event, one landing page, and the graphics around them. Small builds, done properly, that make the bigger systems look finished.</p><p class="pt-toggle">Tap to collapse / expand ↕</p></div></summary>
+        <div class="pt-nodes">
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/count.png" alt="Event Timer thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">C1 · Utility</span><h4>Event Timer</h4><p>Custom digital countdown clock for live events.</p><div class="pt-chips"><span>Countdown</span><span>Live event</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/site.png" alt="Event Landing Page thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">C2 · Landing page</span><h4>Event Landing Page</h4><p>Informational site for an upcoming event — date, details, and a clear action.</p><div class="pt-chips"><span>Event info</span><span>Clear action</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/overlay.png" alt="Digital Overlay thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">C3 · Design</span><h4>Digital Overlay</h4><p>Custom overlay graphics for live streams.</p><div class="pt-chips"><span>Stream graphics</span></div></div></article>
+          <article class="pt-node"><img src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/prints.png" alt="Printed Assets thumbnail" loading="lazy"><div class="pt-body"><span class="pt-num">C4 · Design</span><h4>Printed Assets</h4><p>Print-ready designs for physical handouts.</p><div class="pt-chips"><span>Print-ready</span><span>Handouts</span></div></div></article>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="pt-source">
+    <h3>Source, honestly labelled</h3>
+    <p>Thumbnails are the catalog images from bluemoonstudios.store, in catalog order within each branch. No pricing or sales copy from that site is reproduced here.</p>
+    <p>Verified GitHub repos only: <a href="https://github.com/kevindduy/bluemoon-studios" target="_blank" rel="noopener noreferrer">bluemoon-studios</a>, <a href="https://github.com/kevindduy/bms-dev" target="_blank" rel="noopener noreferrer">bms-dev</a>, <a href="https://github.com/kevindduy/nailstudio" target="_blank" rel="noopener noreferrer">nailstudio</a>, <a href="https://github.com/kevindduy/sam_detailing" target="_blank" rel="noopener noreferrer">sam_detailing</a>, <a href="https://github.com/kevindduy/R-Programming-Course" target="_blank" rel="noopener noreferrer">R-Programming-Course</a>. No separate public repo is claimed for every build above.</p>
+    
+  </div>
+</section>
+        </div>
+<div class="kenz-panel" id="panel-work">
+<label for="tab-home" class="space-back">&larr; All spaces</label>
+<div class="xp-wrap">
+  <input type="radio" name="xp-track" id="xp-all" checked>
+  <input type="radio" name="xp-track" id="xp-platforms">
+  <input type="radio" name="xp-track" id="xp-apps">
+  <input type="radio" name="xp-track" id="xp-bi">
+  <input type="radio" name="xp-track" id="xp-migration">
+  <div class="xp-board">
+    <p class="xp-eyebrow">Experience — Tampa, FL · MacDill AFB</p>
+    <h2 class="xp-title">Experience</h2>
+    <p class="xp-lede">Four roles, newest first. Filter by track.</p>
+
+    <div class="xp-readout" aria-label="At a glance">
+      <div><b>Current role</b><span>Clarity — Data Scientist</span></div>
+      <div><b>Clearance</b><span>Active TS/SCI</span></div>
+      <div><b>Certification</b><span>CompTIA Security+ SY0-701</span></div>
+      <div><b>Contact</b><span><a href="https://www.linkedin.com/in/kevinduy231" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></span></div>
+    </div>
+
+    <div class="xp-filterbar" aria-label="Filter experience by track">
+      <label for="xp-all">All roles</label>
+      <label for="xp-platforms">Platforms</label>
+      <label for="xp-apps">Apps &amp; data</label>
+      <label for="xp-bi">BI &amp; automation</label>
+      <label for="xp-migration">Migration &amp; optimisation</label>
+    </div>
+
+    <div class="xp-timeline">
+      <!-- 01 · CLARITY -->
+      <article class="xp-mission" data-track="platforms">
+        <div class="xp-mhead">
+          <div>
+            <h3 class="xp-org">01 · Clarity</h3>
+            <p class="xp-role">Data Scientist</p>
+            <p class="xp-meta">Jan 2026 — Present · MacDill AFB</p>
+          </div>
+          <span class="xp-badge live">● CURRENT ROLE</span>
+        </div>
+        <p>Building data-driven application experiences across modern data platforms, in a cleared environment. The platform work and the app work are the same job here: govern the data once, then put a usable tool on top of it.</p>
+        <div class="xp-flow" aria-label="Clarity workflow">
+          <span class="xp-step">Pipeline Builder</span><span class="xp-arrow">→</span>
+          <span class="xp-step">Ontology</span><span class="xp-arrow">→</span>
+          <span class="xp-step">AIP Logic</span><span class="xp-arrow">→</span>
+          <span class="xp-step">Streamlit / Shiny app</span><span class="xp-arrow">→</span>
+          <span class="xp-step">PostgreSQL</span>
+        </div>
+        <p><strong>The CRUD loop, inside the app:</strong> a record is created, read back, updated, and deleted in the same tool — not in a spreadsheet on the side.</p>
+        <div class="xp-crud"><span>CREATE</span><span>READ</span><span>UPDATE</span><span>DELETE</span></div>
+        <div class="xp-chips"><span>Palantir Foundry</span><span>Maven</span><span>Pipeline Builder</span><span>Ontology</span><span>AIP Logic</span><span>Streamlit</span><span>Shiny</span><span>PostgreSQL</span><span>HTML / CSS</span></div>
+        
+      </article>
+
+      <!-- 02 · ALKU -->
+      <article class="xp-mission is-past" data-track="apps">
+        <div class="xp-mhead">
+          <div>
+            <h3 class="xp-org">02 · ALKU</h3>
+            <p class="xp-role">Data Engineer / R Developer</p>
+            <p class="xp-meta">Jan 2025 — Jan 2026 · MacDill AFB</p>
+          </div>
+          <span class="xp-badge">PREVIOUS ROLE</span>
+        </div>
+        <p>Connected a live data interface to one consolidated analytical application, and worked the large datasets and relational databases behind it.</p>
+        <div class="xp-flow" aria-label="ALKU workflow">
+          <span class="xp-step">Real-time API · SwaggerUI</span><span class="xp-arrow">→</span>
+          <span class="xp-step">Consolidated Shiny simulation app</span><span class="xp-arrow">→</span>
+          <span class="xp-step">SQLite / PostgreSQL CRUD</span>
+        </div>
+        <p><strong>Scale, without inventing a number:</strong> datasets containing millions of rows, manipulated with dplyr and the Tidyverse — joins, nesting, and pipelines, not one-off exports.</p>
+        <div class="xp-scale" aria-label="Scale: millions of rows"><i></i></div>
+        <p><strong>Standardisation pass:</strong> Power BI M Code translated into pivot tables and ggplot2 / Plotly visuals, so the same analysis reads the same way in both places.</p>
+        <div class="xp-chips"><span>R</span><span>Shiny</span><span>SwaggerUI</span><span>REST API</span><span>dplyr</span><span>Tidyverse</span><span>SQL</span><span>SQLite</span><span>PostgreSQL</span><span>ggplot2</span><span>Plotly</span></div>
+        
+      </article>
+
+      <!-- 03 · KeHE -->
+      <article class="xp-mission is-past" data-track="bi">
+        <div class="xp-mhead">
+          <div>
+            <h3 class="xp-org">03 · KeHE Distributors</h3>
+            <p class="xp-role">Business Data Analyst</p>
+            <p class="xp-meta">May 2024 — Dec 2024 · Remote</p>
+          </div>
+          <span class="xp-badge">PREVIOUS ROLE</span>
+        </div>
+        <p>Applied reporting automation to Publix sales workflows: Excel movement data, cleaned and structured, then rebuilt as automated Power BI reporting.</p>
+        <div class="xp-flow" aria-label="KeHE workflow">
+          <span class="xp-step">Excel · XLOOKUP / PivotTables</span><span class="xp-arrow">→</span>
+          <span class="xp-step">Power Query M</span><span class="xp-arrow">→</span>
+          <span class="xp-step">DAX measures</span><span class="xp-arrow">→</span>
+          <span class="xp-step">Power BI reporting</span>
+        </div>
+        <p><strong>The automation loop:</strong> query transformations in, analytical measures through, recurring reporting out — work that used to be re-done by hand, now rebuilt to run again.</p>
+        <div class="xp-chips"><span>Power BI</span><span>DAX</span><span>Power Query M</span><span>Excel</span><span>XLOOKUP</span><span>PivotTables</span><span>Data transformation</span></div>
+        
+      </article>
+
+      <!-- 04 · MOSAIC -->
+      <article class="xp-mission is-past" data-track="migration">
+        <div class="xp-mhead">
+          <div>
+            <h3 class="xp-org">04 · Mosaic Company</h3>
+            <p class="xp-role">Transformation Analyst (Co-op)</p>
+            <p class="xp-meta">Jan 2024 — May 2024 · Lithia, FL</p>
+          </div>
+          <span class="xp-badge">PREVIOUS ROLE</span>
+        </div>
+        <p>A migration, a pipeline, and a scheduling problem — in one co-op. System migration and real-time reporting, plus Python predictive and optimisation work for how vessels, barges, and trains are scheduled.</p>
+        <div class="xp-flow" aria-label="Mosaic workflow">
+          <span class="xp-step">Spreadsheet → Veslink migration</span><span class="xp-arrow">→</span>
+          <span class="xp-step">Veson → Power BI pipeline</span><span class="xp-arrow">→</span>
+          <span class="xp-step">Python predictive / optimisation scheduling</span>
+        </div>
+        <div class="xp-dial" aria-label="75 percent reduction in contract renewal time"><b>75%</b></div>
+        <p><strong>Reduction in contract renewal time</strong> — the one measured outcome on this board, and the reason Mosaic is the production-adjacent anchor of the portfolio. No other percentage is claimed anywhere on this page.</p>
+        <div class="xp-chips"><span>Python</span><span>Power BI</span><span>Veslink</span><span>Veson</span><span>Data migration</span><span>Predictive analytics</span><span>Optimisation</span><span>Scheduling</span></div>
+        
+      </article>
+    </div>
+
+    <div class="xp-through" aria-label="Through-line">
+      <div><h3>01 · Govern it</h3><p>Foundry / Maven, Pipeline Builder, Ontology, AIP Logic — data modelled before it is displayed.</p></div>
+      <div><h3>02 · Build on it</h3><p>Streamlit and Shiny apps with PostgreSQL / SQLite CRUD — tools people work in, not just view.</p></div>
+      <div><h3>03 · Automate it</h3><p>Power Query M, DAX, and API integration — recurring work rebuilt to run again.</p></div>
+      <div><h3>04 · Prove it</h3><p>One measured outcome is claimed: Mosaic contract renewal time, down 75%.</p></div>
+    </div>
+
+    <div class="xp-internships" style="margin-top:28px">
+      <h3 style="font-family:Georgia,serif;font-size:26px;margin:0 0 4px">Earlier internships — 2023</h3>
+      <article class="xp-mission" data-track="bi" style="margin-top:16px">
+        <div class="xp-mhead"><div>
+          <h3 class="xp-org">TD SYNNEX</h3>
+          <p class="xp-role">Data Analyst Intern</p>
+          <p class="xp-meta">May 2023 — Aug 2023 · Clearwater, FL</p>
+        </div></div>
+        <ul>
+          <li>Improved/solved technical issues with the commerce website through generating web analysis in CX sentiment.</li>
+          <li>Experienced in analyzing large datasets, identifying key trends and patterns, and creating interactive visualizations.</li>
+          <li>Engaged in tools such as Power BI, Tableau, Microsoft Clarity, and Google Analytics.</li>
+        </ul>
+      </article>
+      <article class="xp-mission" data-track="bi" style="margin-top:16px">
+        <div class="xp-mhead"><div>
+          <h3 class="xp-org">Southwest Florida Water Management District</h3>
+          <p class="xp-role">Data Analyst Intern</p>
+          <p class="xp-meta">Jan 2023 — May 2023 · Brooksville, FL</p>
+        </div></div>
+        <ul>
+          <li>At an effective pace, generated insightful reports and ensured the maintenance of up-to-date databases.</li>
+          <li>Prepared and presented critical Public Supply Annual Report (PSAR) data and visualizations to key stakeholders.</li>
+          <li>Identified data gathered and analyzed data flow to propose efficiencies, solutions, or alternative methods.</li>
+        </ul>
+      </article>
+    </div>
+
+    <p class="xp-note">Reading note: cleared work is described at resume level only. Earlier 2023 internships are listed above, in this board; full detail on older projects is in the Older Projects space.</p>
+  </div>
+</div>
+        </div>
+<div class="kenz-panel" id="panel-project">
+<label for="tab-home" class="space-back">&larr; All spaces</label>
+<section class="ml-lab" aria-labelledby="ml-lab-title">
+  <!-- LAB HEADER -->
+  <header class="ml-lab__header">
+    <p class="ml-lab__eyebrow">ML Master&rsquo;s Projects &middot; The Model Lab</p>
+    <p class="ml-lab__academic">Academic, not production — coursework, not a production model.</p>
+    <h2 id="ml-lab-title">Four models in.<br>One honest <em>read-out.</em></h2>
+    <p>Master&rsquo;s-era coursework, presented the way a lab notebook would present it: method first, credit exact, and no number published that the record cannot support.</p>
+    <div class="ml-lab__chips">
+      <span class="ml-lab__chip">Split: <b>70 / 30</b></span>
+      <span class="ml-lab__chip">Validation design: <b>10-fold CV</b></span>
+      <span class="ml-lab__chip">Strongest predictors: <b>G1 &middot; G2</b></span>
+      <span class="ml-lab__chip ml-lab__chip--amber">Kevin built: <b>Logistic Regression only</b></span>
+    </div>
+  </header>
+
+  <div class="ml-lab__body">
+    <!-- METHODS PIPELINE DIAGRAM -->
+    <p class="ml-lab__kicker">01 &middot; How the experiment was built</p>
+    <h3 class="ml-lab__h3">The pipeline, end to end.</h3>
+    <p class="ml-lab__lede">Every model below went through the same pipeline. Nothing here is a one-off run — the design is the point, and the test-set read-out at the end is the only scorecard published.</p>
+    <ol class="ml-lab__pipe" style="list-style:none; padding:0; margin-left:0;">
+      <li class="ml-lab__step"><span class="ml-lab__stepnum">STEP 01</span><h4>Student grades in</h4><p>Group project on student grades. The target: predict the grade outcome from earlier performance.</p></li>
+      <li class="ml-lab__step"><span class="ml-lab__stepnum">STEP 02</span><h4>LASSO selection</h4><p>Feature selection with LASSO, <code>glmnet</code> — shrink the field before any model is fit.</p></li>
+      <li class="ml-lab__step"><span class="ml-lab__stepnum">STEP 03</span><h4>70 / 30 split</h4><p>70% train, 30% held-out test. The test set stays untouched until the final read-out.</p></li>
+      <li class="ml-lab__step"><span class="ml-lab__stepnum">STEP 04</span><h4>10-fold CV design</h4><p>Cross-validation designed into the project. No CV figures are published — see the honesty note below.</p></li>
+      <li class="ml-lab__step"><span class="ml-lab__stepnum">STEP 05</span><h4>Four models fit</h4><p>Logistic Regression, Decision Tree, Random Forest, and LASSO evaluation — each by its credited builder.</p></li>
+      <li class="ml-lab__step"><span class="ml-lab__stepnum">RESULT</span><h4>Test-set read-out</h4><p>Only the held-out test set is scored in public. That is the chart below — and nothing else.</p></li>
+    </ol>
+
+    <!-- LEAD EXPERIMENT: BARS + LEDGER -->
+    <p class="ml-lab__kicker">02 &middot; Lead experiment</p>
+    <h3 class="ml-lab__h3">Grade Predictive Analytics.</h3>
+    <p class="ml-lab__lede">A comparative predictive analytics project: LASSO, Decision Tree, Random Forest, and Logistic Regression on student grades. The chart is test-set only. The ledger is where credit lives.</p>
+
+    <div class="ml-lab__lead">
+      <article class="ml-lab__card">
+        <span class="ml-lab__badge">Test set only</span>
+        <h4>Test-set comparison</h4>
+        <p>Approximate figures, as recorded in the project draft. Random Forest and LASSO get no bar and no invented percentage — their recorded results are qualitative, and they stay qualitative here.</p>
+        <div class="ml-lab__bars" role="img" aria-label="Test-set comparison: Logistic Regression approximately 88 percent, Decision Tree approximately 83 percent, Random Forest overfitting observed, LASSO evaluated with no figure published.">
+          <div class="ml-lab__bar-row">
+            <div class="ml-lab__bar-label">Logistic Regression <span>Kevin &middot; glm &middot; ★ his model</span></div>
+            <div class="ml-lab__bar-track"><div class="ml-lab__bar-fill ml-lab__bar-fill--kevin"></div></div>
+            <div class="ml-lab__bar-value">~88% <small>test set</small></div>
+          </div>
+          <div class="ml-lab__bar-row">
+            <div class="ml-lab__bar-label">Decision Tree <span>Teammates &middot; rpart</span></div>
+            <div class="ml-lab__bar-track"><div class="ml-lab__bar-fill ml-lab__bar-fill--team"></div></div>
+            <div class="ml-lab__bar-value">~83% <small>test set</small></div>
+          </div>
+          <div class="ml-lab__bar-row">
+            <div class="ml-lab__bar-label">Random Forest <span>Teammates</span></div>
+            <div class="ml-lab__bar-track"><div class="ml-lab__bar-fill ml-lab__bar-fill--hatched"></div></div>
+            <div class="ml-lab__bar-value">— <small>overfit observed</small></div>
+          </div>
+          <div class="ml-lab__bar-row">
+            <div class="ml-lab__bar-label">LASSO <span>Teammates &middot; glmnet evaluation</span></div>
+            <div class="ml-lab__bar-track"><div class="ml-lab__bar-fill ml-lab__bar-fill--hatched"></div></div>
+            <div class="ml-lab__bar-value">— <small>evaluated</small></div>
+          </div>
+        </div>
+        <p class="ml-lab__note"><strong>Honesty note:</strong> no cross-validation numbers are published on this page. The old project page&rsquo;s table and write-up disagreed on CV figures, so only the test-set figures from the draft summary are used. Publishing a reconciled CV number would be inventing one.</p>
+      </article>
+
+      <article class="ml-lab__card ml-lab__card--dark">
+        <span class="ml-lab__badge ml-lab__badge--teal">Attribution ledger</span>
+        <h4>Who built what — exactly.</h4>
+        <p>This is the part most portfolios blur. It is not blurred here.</p>
+        <table class="ml-lab__ledger">
+          <thead><tr><th scope="col">Model</th><th scope="col">Built by</th><th scope="col">Recorded result</th></tr></thead>
+          <tbody>
+            <tr class="ml-lab__kevin"><td>Logistic Regression (glm)</td><td>Kevin</td><td>~88% test set</td></tr>
+            <tr><td>Decision Tree (rpart)</td><td>Teammates</td><td>~83% test set</td></tr>
+            <tr><td>Random Forest</td><td>Teammates</td><td>Overfitting observed</td></tr>
+            <tr><td>LASSO (glmnet)</td><td>Teammates</td><td>Evaluated as part of the project</td></tr>
+          </tbody>
+        </table>
+        <p style="color:#c0ced8;">Amber row = Kevin&rsquo;s work. Everything else is credited to teammates, in full, on the record.</p>
+      </article>
+    </div>
+
+    <!-- FEATURE EVIDENCE -->
+    <p class="ml-lab__kicker">03 &middot; What actually predicted</p>
+    <h3 class="ml-lab__h3">G1 and G2 did the heavy lifting.</h3>
+    <div class="ml-lab__features">
+      <div class="ml-lab__feat ml-lab__feat--top"><b>G1</b><span>Strongest predictor, alongside G2. Earlier grades predicted later grades — the signal was in the record itself.</span></div>
+      <div class="ml-lab__feat ml-lab__feat--top"><b>G2</b><span>Strongest predictor, alongside G1. Together, the two earlier grades carried the models.</span></div>
+      <div class="ml-lab__feat"><b>Everything else</b><span>No other feature is ranked or quantified here, because the record does not support a fuller ranking. The honest finding stops at G1/G2.</span></div>
+    </div>
+
+    <!-- SECONDARY EXPERIMENTS -->
+    <p class="ml-lab__kicker">04 &middot; Two more experiments, same honesty</p>
+    <h3 class="ml-lab__h3">House prices, and 1,500 tweets.</h3>
+    <div class="ml-lab__duo">
+      <article class="ml-lab__card">
+        <span class="ml-lab__badge ml-lab__badge--ghost">R &middot; ranger &middot; caret</span>
+        <h4>Kaggle House Prediction</h4>
+        <p>House-price prediction in R: ranger and caret, a small feature subset of just 5 features, and 5-fold cross-validation. A learning build — the method (few features, honest validation) is the point.</p>
+        <div class="ml-lab__stamp">Weak leaderboard — no figure headlined</div>
+        <p class="ml-lab__note">No rank and no score are headlined for this project, on purpose. A weak leaderboard result presented as a win would be misleading; presented as a learning build, it is exactly what it was.</p>
+      </article>
+      <article class="ml-lab__card">
+        <span class="ml-lab__badge ml-lab__badge--ghost">R &middot; Bing dictionary</span>
+        <h4>SHEIN Sentiment Analysis</h4>
+        <p>Sentiment analysis in R over 1,500 tweets, using the Bing dictionary with exact word counts. The counts were tallied, not estimated.</p>
+        <div class="ml-lab__balance" aria-hidden="true"><i></i><b>≈</b><i></i></div>
+        <p><strong>Essentially a near-tie.</strong> No headline conclusion is claimed, because the signal itself was close. The balance above is qualitative — it carries no invented percentages.</p>
+      </article>
+    </div>
+
+    <!-- READING GUIDE -->
+    <div class="ml-lab__guide">
+      
+      <div><h4>Academic, not production</h4><p>These are coursework ML projects. The production-adjacent ML anchor is in Experience: Mosaic predictive and optimisation models for vessel, barge, and train scheduling.</p></div>
+      <div><h4>Talk about it</h4><p><a href="https://www.linkedin.com/in/kevinduy231" target="_blank" rel="noopener noreferrer">LinkedIn</a> — the only contact channel on this page. No phone, no personal email, no pricing.</p></div>
+    </div>
+    <p class="ml-lab__note" style="margin-top:16px;">This page contains no classified, mission-specific, or internal information — it is academic coursework, methods, and test-set figures only.</p>
+  </div>
+</section>
+        </div>
+<div class="kenz-panel" id="panel-capabilities">
+<label for="tab-home" class="space-back">&larr; All spaces</label>
+<section class="cap-wrap" aria-labelledby="cap-title">
+  <div class="cap-head">
+    <p class="cap-kicker">Skills · The control room</p>
+    <h2 id="cap-title">Across the data lifecycle — and every skill tied to where it was actually used.</h2>
+  </div>
+
+  <div class="cap-ribbon" aria-label="Data lifecycle">
+    <div class="cap-stage"><i>◈</i><b>1 · Ingest</b><span>APIs, pipelines, migrations</span></div>
+    <div class="cap-stage"><i>⬢</i><b>2 · Model</b><span>Schemas, ontology, logic</span></div>
+    <div class="cap-stage"><i>▣</i><b>3 · Build</b><span>Apps with real databases</span></div>
+    <div class="cap-stage"><i>➜</i><b>4 · Decide</b><span>Dashboards, models, reports</span></div>
+  </div>
+
+  <p class="cap-legend"><b>How to read the matrix:</b> <span class="cap-dot">●</span> = used in that work, with the evidence named in the group below. <span class="cap-dot amber">○</span> = used in a Blue Moon or academic build, not a client job. <span class="cap-dot none">–</span> = not claimed there. No stars, no percentages — those would be invented.</p>
+
+  <p class="cap-scroll-hint">Scroll → to see all columns</p>
+  <div class="cap-matrix">
+    <table>
+      <thead><tr><th scope="col">Skill</th><th scope="col">Clarity</th><th scope="col">ALKU</th><th scope="col">KeHE</th><th scope="col">Mosaic</th><th scope="col">Blue Moon / Academic</th></tr></thead>
+      <tbody>
+        <tr><td class="skill">Streamlit<small>Python apps</small></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td></tr>
+        <tr><td class="skill">Shiny<small>R apps</small></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td></tr>
+        <tr><td class="skill">PostgreSQL CRUD</td><td><span class="cap-dot">●</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot amber">○</span></td></tr>
+        <tr><td class="skill">SQLite CRUD</td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td></tr>
+        <tr><td class="skill">API integration · Swagger UI</td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td></tr>
+        <tr><td class="skill">SQL · dplyr · Tidyverse</td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot amber">○</span></td></tr>
+        <tr><td class="skill">Palantir Foundry · Maven</td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td></tr>
+        <tr><td class="skill">Pipeline Builder · Ontology · AIP Logic</td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td></tr>
+        <tr><td class="skill">Power BI · DAX · Power Query M</td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td></tr>
+        <tr><td class="skill">Python · R</td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot amber">○</span></td></tr>
+        <tr><td class="skill">Predictive analytics · Optimisation</td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot amber">○</span></td></tr>
+        <tr><td class="skill">Logistic Regression</td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot amber">○</span></td></tr>
+        <tr><td class="skill">Scheduling analysis</td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot none">–</span></td><td><span class="cap-dot">●</span></td><td><span class="cap-dot none">–</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cap-groups">
+    <article class="cap-group">
+      <h3><span>01</span> Application development</h3>
+      <p>Streamlit · Shiny · PostgreSQL CRUD · SQLite CRUD · API integration · Swagger UI</p>
+      <details open><summary>Where each one shows up</summary><ul>
+        <li><b>Streamlit + PostgreSQL CRUD — Clarity:</b> full-stack analytical apps with create, read, update, and delete against PostgreSQL.</li>
+        <li><b>Shiny + PostgreSQL/SQLite CRUD — Clarity and ALKU:</b> Shiny apps at Clarity; at ALKU, a consolidated Shiny simulation app backed by SQL schemas in SQLite and PostgreSQL.</li>
+        <li><b>API integration via Swagger UI — ALKU:</b> a real-time API brought into that consolidated Shiny app.</li>
+        <li><b>CRUD, again, in Blue Moon builds:</b> Service Scheduler, Management Portal, Logistics Tracker, Accounting Portal, and Budget Tracker are the catalog builds where create/read/update/delete is the point — see the Projects tree.</li>
+      </ul></details>
+    </article>
+    <article class="cap-group">
+      <h3><span>02</span> Data engineering &amp; platforms</h3>
+      <p>SQL · PostgreSQL · SQLite · dplyr · Tidyverse · Palantir Foundry · Maven · Pipeline Builder · Ontology · AIP Logic</p>
+      <details open><summary>Where each one shows up</summary><ul>
+        <li><b>Foundry, Maven, Pipeline Builder, Ontology, AIP Logic — Clarity:</b> enterprise workflows.</li>
+        <li><b>dplyr / Tidyverse, millions of rows — ALKU:</b> joins, nesting, and pipelines.</li>
+        <li><b>SQL schemas — ALKU:</b> SQLite and PostgreSQL schemas with CRUD via Shiny/DBI.</li>
+      </ul></details>
+    </article>
+    <article class="cap-group">
+      <h3><span>03</span> Analytics &amp; business intelligence</h3>
+      <p>Python · R · Power BI · DAX · Power Query M · Predictive Analytics · Data Transformation</p>
+      <details><summary>Where each one shows up</summary><ul>
+        <li><b>Power BI, DAX, Power Query M — KeHE:</b> reporting automation for Publix sales, from query transformations to analytical measures.</li>
+        <li><b>Power BI pipeline — Mosaic:</b> a Veson-to-Power BI data pipeline, alongside a Veslink migration.</li>
+        <li><b>Data transformation — ALKU and KeHE:</b> standardisation at scale at ALKU; movement-data cleansing and recurring-report automation at KeHE.</li>
+      </ul></details>
+    </article>
+    <article class="cap-group">
+      <h3><span>04</span> Applied modeling</h3>
+      <p>Logistic Regression · Predictive Modeling · Scheduling Analysis · Optimization</p>
+      <details><summary>Where each one shows up</summary><ul>
+        <li><b>Predictive + optimisation scheduling — Mosaic:</b> Python predictive and optimisation models for vessel, barge, and train scheduling; contract renewal time cut by 75%.</li>
+        <li><b>Logistic Regression — academic, Kevin only:</b> the Grade Predictive Analytics project in ML Master’s Projects. Teammates built the Decision Tree and Random Forest; that credit is kept exact.</li>
+        <li><b>Not production:</b> the academic models (grade, Kaggle House, SHEIN sentiment) are labelled as coursework in their own tab — they are not presented as production wins.</li>
+      </ul></details>
+    </article>
+  </div>
+
+  <div class="cap-foot">
+    <h3>The pattern, in one line</h3>
+  </div>
+</section>
+        </div>
+<div class="kenz-panel" id="panel-credentials">
+<label for="tab-home" class="space-back">&larr; All spaces</label>
+<section class="cred-wrap" aria-labelledby="cred-title">
+  <div class="cred-head">
+    <p class="cred-kicker">Credentials &amp; education · The certificate wall</p>
+    <h2 id="cred-title">The foundation, framed.</h2>
+  </div>
+
+  <div class="cred-wall">
+    <div class="cred-wall-head">
+      <h3>On the wall</h3>
+      <span>Five credentials · No dates invented · No claims added</span>
+    </div>
+
+    <div class="cred-grid">
+      <article class="cred-card featured">
+        <div class="cred-seal" aria-hidden="true">✦</div>
+        <p class="cred-type">Security clearance · Featured</p>
+        <h3>Active TS/SCI</h3>
+        <p>Active security clearance. Shown here as the headline credential because it is the gate to the cleared work in Experience — Clarity and ALKU at MacDill AFB.</p>
+        <span class="cred-ribbon">Cleared work · Resume level only</span>
+        <span class="cred-note">No agency, programme, or access detail is claimed on this page.</span>
+      </article>
+
+      <article class="cred-card">
+        <div class="cred-seal" aria-hidden="true">✓</div>
+        <p class="cred-type">Certification</p>
+        <h3>CompTIA Security+</h3>
+        <p>The security certification behind the cleared work — the baseline that pairs with the clearance above.</p>
+        <span class="cred-ribbon">SY0-701</span>
+        <span class="cred-note">Exam code as listed on the resume.</span>
+      </article>
+
+      <article class="cred-card">
+        <div class="cred-seal" aria-hidden="true">◈</div>
+        <p class="cred-type">Graduate degree</p>
+        <h3>MBA — Business Analytics</h3>
+        <p>Graduate business analytics training: the bridge between the modeling work and the reporting, pricing, and operations decisions it has to serve.</p>
+        <span class="cred-ribbon">University of South Florida</span>
+        <span class="cred-note">The ML Master’s Projects tab is the academic work that sits alongside this degree.</span>
+      </article>
+
+      <article class="cred-card">
+        <div class="cred-seal" aria-hidden="true">✦</div>
+        <p class="cred-type">Undergraduate degree</p>
+        <h3>BS — Data Science</h3>
+        <p>The undergraduate data-science degree — statistics, programming, and analytics, with honours.</p>
+        <span class="cred-ribbon">Magna Cum Laude · University of South Florida</span>
+        <span class="cred-note">Honour as listed on the resume.</span>
+      </article>
+
+      <article class="cred-card">
+        <div class="cred-seal" aria-hidden="true">◆</div>
+        <p class="cred-type">Diploma</p>
+        <h3>IB Diploma</h3>
+        <p>The International Baccalaureate diploma — the earliest credential on the wall, and the one that sets the pattern: broad, examined, and completed with honours.</p>
+        <span class="cred-ribbon">Summa Cum Laude</span>
+        <span class="cred-note">Honour as listed on the resume. No school or year is claimed here.</span>
+      </article>
+    </div>
+
+    <div class="cred-ledger">
+      <h3>The ledger — what this page does <em>not</em> claim</h3>
+      <ul>
+        <li>No graduation years, GPAs, or institutions beyond USF where the resume names it.</li>
+        <li>No clearance agency, programme, or level of access beyond “Active TS/SCI.”</li>
+        <li>No additional certifications, courses, or honours beyond the five above.</li>
+        <li>Coursework-only skills (notably C++) are not dressed up as credentials — they stay in Older Projects, labelled as coursework.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cred-foot">
+    <p><strong>Read next:</strong> Skills shows where each skill was used; Experience shows the work itself; ML Master’s Projects shows the academic modeling.</p>
+  </div>
+</section>
+        </div>
+<div class="kenz-panel" id="panel-archive">
+<label for="tab-home" class="space-back">&larr; All spaces</label>
+<section class="v4-attic" aria-labelledby="v4-attic-title">
+  <div class="v4-attic-inner">
+    <p class="v4-attic-kicker">The attic · Card catalog</p>
+    <h2 id="v4-attic-title">Older projects, in full.</h2>
+
+
+    <div class="v4-attic-shelf">
+      <h3>Shelf 1 — ML, in miniature</h3>
+      <p>The academic modelling cards. The full grade breakdown lives in the ML Master’s Projects tab; this is its archive record.</p>
+      <div class="v4-attic-grid">
+        <article class="v4-attic-card" id="v4-a01">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-grade-predictive-thumbnail.webp" alt="grade-predictive thumbnail" data-archive-thumb="grade-predictive" loading="lazy">
+          <div class="v4-attic-call"><b>A01</b><span class="v4-attic-stamp">Team work · credit exact</span></div>
+          <h4>Grade Predictive Analytics</h4>
+          <p>Group project, student grades. LASSO (glmnet) feature selection, 70/30 split, 10-fold CV design.
+            Kevin built Logistic Regression only (glm, ~88% test set); teammates built Decision Tree (rpart, ~83%)
+            and Random Forest (overfit), plus the LASSO evaluation. G1/G2 were the strongest predictors.
+            No CV numbers are published — the old page’s table and write-up disagreed.</p>
+          <p class="v4-attic-meta">Full record: <label for="tab-project" style="cursor:pointer;text-decoration:underline;">ML Master&rsquo;s Projects →</label></p>
+          <p class="v4-attic-meta">Methods: LASSO · Decision Tree · Random Forest · Logistic Regression</p>
+        </article>
+        <article class="v4-attic-card" id="v4-a02">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-kaggle-house-thumbnail.webp" alt="kaggle-house thumbnail" data-archive-thumb="kaggle-house" loading="lazy">
+          <div class="v4-attic-call"><b>A02</b><span class="v4-attic-stamp warn">Weak result — recorded honestly</span></div>
+          <h4>Kaggle House Prediction</h4>
+          <p>House-price prediction in R with ranger and caret, a small feature subset (5 features), and
+            5-fold cross-validation. The leaderboard result was weak, so no rank or score is headlined here.
+            Kept as a learning build — the method is the record, not the placement.</p>
+          <p class="v4-attic-meta">Full record: <label for="tab-project" style="cursor:pointer;text-decoration:underline;">ML Master&rsquo;s Projects →</label></p>
+          <p class="v4-attic-meta">Tools: R · ranger · caret · 5-fold CV</p>
+        </article>
+        <article class="v4-attic-card" id="v4-a03">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-shein-sentiment-thumbnail.webp" alt="shein-sentiment thumbnail" data-archive-thumb="shein-sentiment" loading="lazy">
+          <div class="v4-attic-call"><b>A03</b><span class="v4-attic-stamp">Near-tie — no headline claim</span></div>
+          <h4>SHEIN Sentiment Analysis (R)</h4>
+          <p>Sentiment analysis in R over 1,500 tweets, using the Bing dictionary with exact word counts.
+            The result was essentially a near-tie, so no headline conclusion is claimed. The honest finding
+            is that the signal was close — and the dictionary, the counts, and the near-tie itself are what is recorded.</p>
+          <p class="v4-attic-meta">Full record: <label for="tab-project" style="cursor:pointer;text-decoration:underline;">ML Master&rsquo;s Projects →</label></p>
+          <p class="v4-attic-meta">Tools: R · Bing dictionary · 1,500 tweets</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="v4-attic-shelf">
+      <h3>Shelf 2 — Data &amp; code, early years</h3>
+      <p>Databases, Java, and R coursework — the groundwork underneath the later work.</p>
+      <div class="v4-attic-grid">
+        <article class="v4-attic-card" id="v4-a04">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-sql-simulation-thumbnail.webp" alt="sql-simulation thumbnail" data-archive-thumb="sql-simulation" loading="lazy">
+          <div class="v4-attic-call"><b>A04</b><span class="v4-attic-stamp">Coursework</span></div>
+          <h4>SQL Database Simulation</h4>
+          <p>Fictional clinic database: entity-relationship diagram, Microsoft Access, and joins.
+            Database design and querying practice, not a production system.</p>
+          <p class="v4-attic-meta">ERD · Microsoft Access · joins</p>
+        </article>
+        <article class="v4-attic-card" id="v4-a05">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-java-storm-chaser-thumbnail.webp" alt="java-storm-chaser thumbnail" data-archive-thumb="java-storm-chaser" loading="lazy">
+          <div class="v4-attic-call"><b>A05</b><span class="v4-attic-stamp">Coursework only</span></div>
+          <h4>Java Storm Chaser</h4>
+          <p>Undergraduate Java coursework project. Listed as coursework — not a current Java proficiency claim.</p>
+          <p class="v4-attic-meta">Language: Java · Level: undergraduate coursework</p>
+        </article>
+        <article class="v4-attic-card" id="v4-a06">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-r-programming-thumbnail.webp" alt="r-programming thumbnail" data-archive-thumb="r-programming" loading="lazy">
+          <div class="v4-attic-call"><b>A06</b><span class="v4-attic-stamp">Repo on file</span></div>
+          <h4>R Programming — LIS 4370</h4>
+          <p>Undergraduate R coursework, and the only old WordPress project page with a GitHub repo link:
+            <a href="https://github.com/kevindduy/R-Programming-Course" target="_blank" rel="noopener noreferrer">github.com/kevindduy/R-Programming-Course</a>.
+            Its gists are stamped January 2023 — the only dates on any of the old project pages.</p>
+          <p class="v4-attic-meta">Dated evidence: Jan 2023 gists · Repo linked above</p>
+        </article>
+        <article class="v4-attic-card" id="v4-a07">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-sleep-gss-thumbnail.webp" alt="sleep-gss thumbnail" data-archive-thumb="sleep-gss" loading="lazy">
+          <div class="v4-attic-call"><b>A07</b><span class="v4-attic-stamp">Course papers</span></div>
+          <h4>Sleep-Trends &amp; GSS Course Papers (R)</h4>
+          <p>Course papers in R, including sleep-trends and General Social Survey analysis.
+            Academic coursework, presented as such — no findings headlined beyond the papers themselves.</p>
+          <p class="v4-attic-meta">Tools: R · Topics: sleep trends · GSS</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="v4-attic-shelf">
+      <h3>Shelf 3 — Coursework, labelled as coursework</h3>
+      <p>The catch-all shelf, opened up instead of compressed into one line.</p>
+      <div class="v4-attic-grid">
+        <article class="v4-attic-card" id="v4-a08">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-tableau-cpp-excel-spss-thumbnail.webp" alt="tableau-cpp-excel-spss thumbnail" data-archive-thumb="tableau-cpp-excel-spss" loading="lazy">
+          <div class="v4-attic-call"><b>A08</b><span class="v4-attic-stamp warn">Not a current proficiency</span></div>
+          <h4>Tableau / C++ / Excel / SPSS Coursework</h4>
+          <p>Undergraduate presentations and coursework across Tableau, Excel, SPSS, and C++.
+            C++ in particular: the undergraduate
+            project was the 21-card trick (arrays, shuffle, deck logic), Kevin has said he is not fully
+            proficient in C++, and would need a few weeks to relearn it. Coursework only — never a current
+            proficiency claim.</p>
+          <p class="v4-attic-meta">C++ project: 21-card trick · arrays · shuffle · deck logic</p>
+        </article>
+        <article class="v4-attic-card" id="v4-a09">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-internships-2023-thumbnail.webp" alt="internships-2023 thumbnail" data-archive-thumb="internships-2023" loading="lazy">
+          <div class="v4-attic-call"><b>A09</b><span class="v4-attic-stamp warn">Archive only</span></div>
+          <h4>Earlier Roles — from the old WordPress bio</h4>
+          <p>The old bio is stale (it still presents Kevin at ALKU, not Clarity) and also lists:
+            USF Big Data Analytics Lab Research Assistant (NLP). The TD SYNNEX and Southwest Florida Water Management District internships are now in Experience, under Earlier internships — 2023. The bio’s specific operational description of the ALKU work is not carried into this portfolio.</p>
+          <p class="v4-attic-meta">Source: old WordPress bio · Status: archive only</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="v4-attic-shelf">
+      <h3>Shelf 4 — Provenance: what counts, what doesn’t, what isn’t shown</h3>
+      
+      <div class="v4-attic-grid">
+        <article class="v4-attic-card" id="v4-a10">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-blue-moon-catalog-thumbnail.webp" alt="blue-moon-catalog thumbnail" data-archive-thumb="blue-moon-catalog" loading="lazy">
+          <div class="v4-attic-call"><b>A10</b><span class="v4-attic-stamp">Full catalog</span></div>
+          <h4>Blue Moon Studios — full catalog</h4>
+          <p>See the Projects tree for all 18 builds with thumbnails.
+            <a href="https://bluemoonstudios.store" target="_blank" rel="noopener noreferrer">bluemoonstudios.store ↗</a></p>
+          <p class="v4-attic-meta">Count: 18 builds · Thumbnails: Projects tab</p>
+        </article>
+        
+        <article class="v4-attic-card" id="v4-a12">
+          <img class="archive-thumb" src="https://raw.githubusercontent.com/peter-duy/kevin-duy-portfolio-v2/main/archive-climate-dashboard-thumbnail.webp" alt="Climate Dashboard thumbnail" data-archive-thumb="climate" loading="lazy">
+          <div class="v4-attic-call"><b>A12</b><span class="v4-attic-stamp">Rebuilt demo</span></div>
+          <h4>Climate Dashboard</h4>
+          <p>Rebuilt demo of the previously unfinished WordPress concept. Live Open-Meteo data for Wesley Chapel / Tampa, FL: current conditions, 7-day forecast, temperature chart, and data table. See the sample dashboard below in this card. No invented historical climate data.</p>
+          <p class="v4-attic-meta">Status: rebuilt demo · Data: Open-Meteo, live</p>
+        
+          <div class="cd-sample" style="margin-top:16px;border-top:1px solid #dce2e5;padding-top:14px">
+            <h5 style="margin:0 0 6px;font-size:16px;color:#142a3d">Sample dashboard — weather API</h5>
+            <p style="margin:6px 0;color:#344657;font-size:14px">Description: a rebuilt demo of the previously unfinished WordPress Climate Dashboard, using the Open-Meteo weather API (free, no key). Location: Wesley Chapel / Tampa, FL (28.24, -82.35), timezone America/New_York. The sample fetches current temperature, humidity, precipitation, weather code, and wind, plus a 7-day forecast of daily highs, lows, and precipitation probability. Temperatures are converted from the API's &deg;C to &deg;F and wind from km/h to mph in the browser, and both units are labelled. No historical climate data is invented.</p>
+            <p style="margin:6px 0;color:#344657;font-size:14px">Live sample: <b id="cds-temp">78.3°F (Nov 1 snapshot)</b> &middot; Humidity <b id="cds-hum">75% (Nov 1 snapshot)</b> &middot; Wind <b id="cds-wind">11.5 mph (Nov 1 snapshot)</b> &middot; Precipitation <b id="cds-precip">0.00 mm (Nov 1 snapshot)</b></p>
+            <p id="cds-status" style="margin:6px 0;color:#4a5a66;font-size:13px">Status: showing Nov 1 sample until live data loads.</p>
+            <div id="cds-days" style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:10px 0;font-size:13px"></div>
+            <p style="margin:6px 0;color:#4a5a66;font-size:13px">Sample snapshot, if live fetch is blocked in a preview: Nov 1, 2026, 09:15 ET — 25.7&deg;C (78.3&deg;F), 75% humidity, 0.00 mm precipitation, WMO code 3, wind 18.5 km/h (11.5 mph). This is a dated snapshot, not current weather.</p>
+            <button type="button" id="cds-refresh" style="background:#142a3d;color:#fff;border:0;border-radius:6px;padding:8px 14px;font-weight:700;cursor:pointer">Refresh sample</button>
+            <p style="margin:6px 0;color:#4a5a66;font-size:13px">Data source: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.</p>
+          </div>
+</article>
+
+      </div>
+    </div>
+
+    <p class="v4-attic-foot">Contact, as everywhere else on this page: <a href="https://www.linkedin.com/in/kevinduy231" style="color:#c8dce8;">LinkedIn</a> only.
+      No phone number and no personal email are published on this public page, and no pricing is shown here.</p>
+  </div>
+</section>
+        </div>
+      </div>
+    </div>
+
+<section class="disclosure-section" aria-label="Information disclosure">
+      <div class="container disclosure-inner">
+
+        <span class="disclosure-heading">Responsible disclosure</span>
+
+        <p class="disclosure-text">
+          Cleared work is described at resume level only. This portfolio
+          intentionally excludes mission-specific details, internal
+          screenshots, and restricted information. Any future application
+          demonstration should use synthetic data.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================== FOOTER ======================== -->
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+
+      <div>
+        <div class="footer-name">Kevin Duy</div>
+        <p class="footer-note">
+          Data Science · Data Engineering · Analytics Engineering
+        </p>
+        <p class="footer-note">Target roles: Data Scientist · Data Engineer · Analytics Engineer</p>
+        <p class="footer-note"><a href="https://www.linkedin.com/in/kevinduy231" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a> · <label for="tab-home" style="cursor:pointer;text-decoration:underline;">← All spaces</label></p>
+      </div>
+
+      <a class="footer-top" href="#top">
+        Back to top ↑
+      </a>
+
+    </div>
+  </footer>
+
+  <script>
+    if (window.innerWidth <= 820) {
+      var branches = document.querySelectorAll('.pt-tree details[open]');
+      for (var i = 1; i < branches.length; i++) { branches[i].removeAttribute('open'); }
+    }
+    document.querySelectorAll('[data-tab]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var t = document.getElementById(a.getAttribute('data-tab'));
+        if (t) t.checked = true;
+      });
+    });
+  </script>
+
+<style>.archive-thumb[src=""]{display:none}</style>
+
+<script>
+(function(){
+  var endpoint = "https://api.open-meteo.com/v1/forecast?latitude=28.24&longitude=-82.35&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=America%2FNew_York&forecast_days=7";
+  function fmt(n,d){ return Number(n).toFixed(d===undefined?0:d); }
+  function cToF(c){ return c*9/5+32; }
+  function kmhToMph(k){ return k*0.621371; }
+  function el(id){ return document.getElementById(id); }
+  function load(){
+    var temp=el("cds-temp"); if(!temp) return;
+    temp.textContent="Loading…";
+    fetch(endpoint).then(function(r){ return r.json(); }).then(function(data){
+      var cur=data.current;
+      temp.textContent=fmt(cToF(cur.temperature_2m))+"°F ("+fmt(cur.temperature_2m,1)+"°C)";
+      el("cds-hum").textContent=cur.relative_humidity_2m+"%";
+      el("cds-wind").textContent=fmt(kmhToMph(cur.wind_speed_10m),1)+" mph ("+fmt(cur.wind_speed_10m,1)+" km/h)";
+      el("cds-precip").textContent=fmt(cur.precipitation,2)+" mm";
+      var st=el("cds-status"); if(st) st.textContent="Live data as of "+cur.time+" (America/New_York).";
+      var days=el("cds-days"); days.innerHTML="";
+      for(var i=0;i<data.daily.time.length;i++){
+        var d=document.createElement("div");
+        d.style.cssText="border:1px solid #dce2e5;border-radius:6px;padding:8px;text-align:center;background:#fff";
+        d.innerHTML="<b>"+data.daily.time[i].slice(5)+"</b><br>"+fmt(cToF(data.daily.temperature_2m_max[i]))+"°F / "+fmt(cToF(data.daily.temperature_2m_min[i]))+"°F";
+        days.appendChild(d);
+      }
+    }).catch(function(){
+      temp.textContent="Live data unavailable — see dated snapshot above"; var st2=el("cds-status"); if(st2) st2.textContent="Live data unavailable — showing Nov 1 sample.";
+    });
+  }
+  var btn=el("cds-refresh"); if(btn) btn.addEventListener("click", load);
+  load();
+})();
+</script>
+
+
+<style>
+  /* v6: hero dark only — panels light, no navy-on-navy stacking */
+  .xp-board{background:#ffffff !important;color:#172635 !important;border:1px solid #dce2e5;border-radius:6px}
+  .xp-eyebrow{color:#236b91 !important}
+  .xp-title em{color:#236b91 !important}
+  .xp-lede{color:#344657 !important}
+  .xp-readout div{background:#f4f5f4 !important;border:1px solid #dce2e5 !important}
+  .xp-readout b{color:#236b91 !important}
+  .xp-readout a{color:#236b91 !important}
+  .xp-filterbar label{border:1.5px solid #142a3d !important;color:#142a3d !important;background:#ffffff !important}
+  #xp-all:checked~.xp-board .xp-filterbar label[for="xp-all"],#xp-platforms:checked~.xp-board .xp-filterbar label[for="xp-platforms"],#xp-apps:checked~.xp-board .xp-filterbar label[for="xp-apps"],#xp-bi:checked~.xp-board .xp-filterbar label[for="xp-bi"],#xp-migration:checked~.xp-board .xp-filterbar label[for="xp-migration"]{background:#142a3d !important;color:#ffffff !important;border-color:#142a3d !important}
+  .xp-mission::before{border:4px solid #ffffff !important;box-shadow:0 0 0 2px #dce2e5 !important}
+  .xp-mission:hover{box-shadow:0 12px 26px rgba(20,42,61,.15) !important}
+  .xp-through div{background:#f4f5f4 !important;border:1px solid #dce2e5 !important}
+  .xp-through p{color:#344657 !important}
+  .xp-note{color:#4a5a66 !important}
+  .xp-note a{color:#236b91 !important}
+  .pt-panel .pt-head{background:#ffffff !important;color:#172635 !important;border:1px solid #dce2e5 !important}
+  .pt-panel .pt-kicker{color:#236b91 !important}
+  .pt-panel .pt-head h2{color:#142a3d !important}
+  .pt-panel .pt-head p{color:#344657 !important}
+  .pt-panel .pt-source{background:#f4f5f4 !important;color:#172635 !important;border:1px solid #dce2e5 !important}
+  .pt-panel .pt-source h3{color:#142a3d !important}
+  .pt-panel .pt-mono{background:#eaf2f6 !important;color:#142a3d !important}
+  .ml-lab__header{background:#ffffff !important;color:#172635 !important;border:1px solid #dce2e5 !important}
+  .ml-lab__header h2{color:#142a3d !important}
+  .ml-lab__header h2 em{color:#236b91 !important}
+  .ml-lab__header p{color:#344657 !important}
+  .ml-lab__eyebrow{color:#236b91 !important}
+  .ml-lab__chip{border:1px solid #dce2e5 !important}
+  .ml-lab__chip b{color:#236b91 !important}
+  .ml-lab__card--dark{background:#f4f5f4 !important;color:#172635 !important;border:1px solid #dce2e5 !important}
+  .ml-lab__card--dark h4{color:#142a3d !important}
+  .ml-lab__card--dark p{color:#344657 !important}
+  .v4-attic{background:#f4f5f4 !important;color:#172635 !important}
+  
+  
+  .v4-attic-kicker{color:#236b91 !important}
+  .v4-attic-shelf > p{color:#4a5a66 !important}
+  .v4-attic-card{border:1px solid #dce2e5 !important}
+  
+  .v4-attic-foot a{color:#236b91 !important}
+</style>
+
+</body>
+</html>
+<style>
+  /* v5 alignment pass: one width, no overlap, no clipped tops */
+  .kenz-panels { max-width: 1160px; margin: 0 auto; }
+  .kenz-panel > section, .kenz-panel > div { max-width: 100%; overflow-wrap: break-word; }
+  .xp-board, .pt-panel .pt-head, .ml-lab__header, .cd-hero { overflow: visible; }
+  .xp-board { border-radius: 6px; }
+  .site-header { z-index: 50; }
+  h1, h2, h3, h4 { line-height: 1.2; }
+  .pt-branch-head .pt-count { position: static; display: block; margin-top: 6px; }
+  .archive-thumb { width: 100%; height: 140px; object-fit: cover; display: block; border-radius: 6px 6px 0 0; background: #eaf2f6; }
+  .v4-attic-card { overflow: hidden; }
+</style>
